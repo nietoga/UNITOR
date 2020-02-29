@@ -39,7 +39,7 @@ Every piece of knowledge must have a single, unambiguous, authoritative represen
 
 ## Views
 
-* Every view should extend layouts/master.
+* Every view should extend layouts/app.
 * Every view must be a blade file.
 
 ## Models
