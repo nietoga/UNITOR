@@ -11,6 +11,6 @@ class HomeController extends Controller
 
     public function forum()
     {
-        return view('post.index');
+        return view('forum.index');
     }
 }
