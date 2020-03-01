@@ -15,6 +15,10 @@
                     @endif
 
                     You are logged in!
+
+                    <form action="{{ route('period.index') }}" method="get">
+                        <button type="submit" class="btn btn-primary">Periods</button>
+                    </form>
                 </div>
             </div>
         </div>
