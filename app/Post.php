@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    //attributes id, name, price, created_at, updated_at
-    protected $fillable = ['title', 'content', 'author_name'];
+    //attributes id, title, content, author_id, created_at, updated_at
+    protected $fillable = ['title', 'content', 'author_id'];
     
     // Id
     public function getId()
@@ -41,14 +41,14 @@ class Post extends Model
         $this->attributes['content'] = $content;
     }
 
-    // Author_name
+    // Author_id
     public function getAuthorName()
     {
-        return $this->attributes['author_name'];
+        return $this->attributes['author_id'];
     }
-    public function setAuthorName($author_name)
+    public function setAuthorName($author_id)
     {
-        $this->attributes['author_name'] = $author_name;
+        $this->attributes['author_id'] = $author_id;
     }
     
     public function comments()
