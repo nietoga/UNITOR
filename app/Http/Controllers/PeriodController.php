@@ -64,18 +64,29 @@ class PeriodController extends Controller
     public function show($id)
     {
         $period = Period::findOrFail($id);
-        return view('period.show')->with('period', $period);
+
+        if ($period->user == Auth::user()) {
+            return view('period.show')->with('period', $period);
+        } else {
+            return abort(401);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $period
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function delete($id)
     {
-        Period::destroy($id);
-        return redirect('/period/index');
+        $period = Period::findOrFail($id);
+
+        if ($period->user == Auth::user()) {
+            Period::destroy($id);
+            return redirect('/period/index');
+        } else {
+            return abort(401);
+        }
     }
 }
