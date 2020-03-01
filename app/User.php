@@ -36,4 +36,22 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Returns current User id
+     *
+     * @return int
+     */
+    public function getId() {
+        return $this->id;
+    }
+
+    /**
+     * Returns the periods this user possesses
+     *
+     * @return Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function periods() {
+        return $this->hasMany(Period::class);
+    }
 }
