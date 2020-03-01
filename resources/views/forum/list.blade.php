@@ -16,7 +16,7 @@
                                     {{ $post->getTitle() }}
                                 </a>
                                 <p>{{ $post->getContent() }}</p>
-                                <b>{{ $post->getAuthorName() }} </b>
+                                
                                 <br />
                                 <br />
                                 @endforeach

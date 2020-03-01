@@ -15,7 +15,7 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/forum', 'HomeController@forum')->name("home.forum");
+Route::get('/forum', 'HomeController@forum')->name("forum");
 
 Route::get('/period/index', 'PeriodController@index')->name('period.index');
 Route::get('/period/new', 'PeriodController@new')->name('period.new');

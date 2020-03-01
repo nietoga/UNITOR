@@ -8,9 +8,8 @@
                 <div class="card-header">{{ $data["post"]["title"]}}
                 </div>
                 <div class="card-body">
-                    <b>Title:</b> {{ $data["post"]["title"] }}<br />
+                    <p>By: {{ ($data["user"]->getName()) }}</p>
                     <p>{{ $data["post"]["content"] }}</p>
-                    <p>{{ $data["post"]["author_name"] }}</p>
                     <div class="comments-session">
                         <b>Comments</b>
                         @foreach($data["post"]["comments"] as $comment)

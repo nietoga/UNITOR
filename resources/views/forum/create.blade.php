@@ -18,8 +18,7 @@
                     <form method="POST" action="{{ route('post.save') }}">
                         @csrf
                         <input type="text" placeholder="Enter title" name="title" value="{{ old('title') }}" />
-                        <input type="text" placeholder="Enter content" name="content" value="{{ old('content') }}" />
-                        <input type="text" placeholder="Enter author" name="author_name" value="{{ old('author_name') }}" />
+                        <textarea type="text" placeholder="Enter content" name="content" value="{{ old('content') }}"></textarea>
                         <input type="submit" value="Send" />
                     </form>
                 </div>

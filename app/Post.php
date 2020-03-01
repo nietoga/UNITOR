@@ -42,7 +42,7 @@ class Post extends Model
     }
 
     // Author_id
-    public function getAuthorName()
+    public function getAuthorId()
     {
         return $this->attributes['author_id'];
     }
@@ -54,5 +54,14 @@ class Post extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    /**
+     * Returns the User that wrote this post
+     *
+     * @return Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user() {
+        return $this->belongsTo(User::class);
     }
 }
