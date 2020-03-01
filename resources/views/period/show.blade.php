@@ -9,6 +9,7 @@
                 <div class="card-body">
                     <form action="{{ route('period.delete', $period->getId()) }}" method="post">
                         @csrf
+                        @method('DELETE')
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                 </div>
