@@ -19,12 +19,13 @@ class PostController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * Show a post from the list
+     * 
+     * @return \Illuminate\Http\Response
+     */
     public function show($id)
     {
-        if (!is_numeric($id)) {
-            return view('home.index');
-        }
-
         $data = []; //to be sent to the view
 
         $post = Post::findOrFail($id);
@@ -34,6 +35,11 @@ class PostController extends Controller
         return view('forum.show')->with("data", $data);
     }
 
+    /**
+     * Delete a post along with the associated comments
+     * 
+     * @return \Illuminate\Http\Response
+     */
     public function destroy($id){
         $post = Post::findOrFail($id);
         $post->comments()->delete();
@@ -44,6 +50,11 @@ class PostController extends Controller
         return view('forum.list')->with("data", $data, 'success', 'Post deleted successfully!');
     }
 
+    /**
+     * List all posts in the forum
+     * 
+     * @return \Illuminate\Http\Response
+     */
     public function list()
     {
         $data = []; //to be sent to the view
@@ -53,15 +64,26 @@ class PostController extends Controller
         return view('forum.list')->with("data", $data);
     }
 
-    public function create()
+    /**
+     * Show the form to creating a new post
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function new()
     {
         $data = []; //to be sent to the view
         $data["title"] = "Create post";
         $data["posts"] = Post::all();
 
-        return view('forum.create')->with("data", $data);
+        return view('forum.new')->with("data", $data);
     }
 
+    /**
+     * Store a new post in storage
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function save(Request $request)
     {
         $request->validate([

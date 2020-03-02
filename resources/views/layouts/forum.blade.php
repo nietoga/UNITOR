@@ -37,7 +37,7 @@
                 <a class="navbar-brand" href="{{ route('post.list') }}">
                     Posts
                 </a>
-                <a class="navbar-brand" href="{{ route('post.create' ) }}">
+                <a class="navbar-brand" href="{{ route('post.new' ) }}">
                     New Post
                 </a>
 
