@@ -3,29 +3,30 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class Post extends Model
 {
     //attributes id, title, content, user_id, created_at, updated_at
     protected $fillable = ['title', 'content', 'user_id'];
-    
+
     // Id
     public function getId()
     {
         return $this->attributes['id'];
     }
-    
+
     public function setId($id)
     {
         $this->attributes['id'] = $id;
     }
-    
+
     // Title
     public function getTitle()
     {
         return $this->attributes['title'];
     }
-    
+
     public function setTitle($title)
     {
         $this->attributes['title'] = $title;
@@ -59,10 +60,22 @@ class Post extends Model
     {
         $this->attributes['user_id'] = $user_id;
     }
-    
+
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    /**
+     * Validate functions. The fields that are validated are:
+     * title, content
+     */
+    public static function validate(Request $request)
+    {
+        $request->validate([
+            "title" => "required",
+            "content" => "required"
+        ]);
     }
 
     /**
@@ -70,7 +83,8 @@ class Post extends Model
      *
      * @return Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 }

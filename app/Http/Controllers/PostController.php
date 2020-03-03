@@ -86,11 +86,7 @@ class PostController extends Controller
      */
     public function save(Request $request)
     {
-        $request->validate([
-            "title" => "required",
-            "content" => "required"
-        ]);
-
+        Post::validate($request);
         Post::create([
             'title' => $request["title"],
             'content' => $request["content"], 
