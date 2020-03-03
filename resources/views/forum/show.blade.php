@@ -8,7 +8,7 @@
                 <div class="card-header">{{ $data["post"]["title"]}}
                 </div>
                 <div class="card-body">
-                    <p>By: {{ ($data["user"]->getName()) }}</p>
+                    <p>By: {{ $data["post"]->user->getName() }}</p>
                     <p>{{ $data["post"]["content"] }}</p>
                     <div class="comments-session">
                         <b>Comments</b>

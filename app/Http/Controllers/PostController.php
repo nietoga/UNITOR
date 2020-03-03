@@ -31,7 +31,6 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         $data["title"] = $post->getTitle();
         $data["post"] = $post;
-        $data["user"] = User::findOrFail($post->getUserId());
         return view('forum.show')->with("data", $data);
     }
 
