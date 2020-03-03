@@ -47,7 +47,7 @@ class PostController extends Controller
         $data["title"] = "Posts list";
         $data["posts"] = Post::all();
 
-        return view('forum.list')->with("data", $data, 'success', 'Post deleted successfully!');
+        return view('forum.index')->with("data", $data, 'success', 'Post deleted successfully!');
     }
 
     /**
@@ -55,13 +55,13 @@ class PostController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function list()
+    public function index()
     {
         $data = []; //to be sent to the view
         $data["title"] = "Posts list";
         $data["posts"] = Post::all();
 
-        return view('forum.list')->with("data", $data);
+        return view('forum.index')->with("data", $data);
     }
 
     /**

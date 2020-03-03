@@ -24,9 +24,9 @@ Route::post('period/save', 'PeriodController@save')->name('period.save');
 Route::delete('/period/{id}', 'PeriodController@delete')->name('period.delete');
 
 // Forum routes
-Route::get('/post/show/{id}', 'PostController@show')->name("post.show");
+Route::get('/post/index', 'PostController@index')->name("post.index");
 Route::get('/post/new', 'PostController@new')->name("post.new");
+Route::get('/post/show/{id}', 'PostController@show')->name("post.show");
 Route::post('/post/save', 'PostController@save')->name("post.save");
-Route::get('/post/list', 'PostController@list')->name("post.list");
 Route::delete('/post/destroy/{id}', 'PostController@destroy')->name("post.destroy");
 ?>

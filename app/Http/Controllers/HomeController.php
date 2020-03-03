@@ -33,6 +33,6 @@ class HomeController extends Controller
      */
     public function forum()
     {
-        return view('forum.index');
+        return view('forum.main');
     }
 }
