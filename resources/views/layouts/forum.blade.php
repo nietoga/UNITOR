@@ -34,7 +34,7 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     Unitor
                 </a>
-                <a class="navbar-brand" href="{{ route('post.list') }}">
+                <a class="navbar-brand" href="{{ route('post.index') }}">
                     Posts
                 </a>
                 <a class="navbar-brand" href="{{ route('post.new' ) }}">
