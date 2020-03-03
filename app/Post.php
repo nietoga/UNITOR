@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    //attributes id, title, content, author_id, created_at, updated_at
-    protected $fillable = ['title', 'content', 'author_id'];
+    //attributes id, title, content, user_id, created_at, updated_at
+    protected $fillable = ['title', 'content', 'user_id'];
     
     // Id
     public function getId()
@@ -31,7 +31,6 @@ class Post extends Model
         $this->attributes['title'] = $title;
     }
 
-    // Content
     public function getContent()
     {
         return $this->attributes['content'];
@@ -41,14 +40,24 @@ class Post extends Model
         $this->attributes['content'] = $content;
     }
 
-    // Author_id
-    public function getAuthorId()
+    /**
+     * Get post author id.
+     * 
+     * @return int User identifier.
+     */
+    public function getUserId()
     {
-        return $this->attributes['author_id'];
+        return $this->attributes['user_id'];
     }
-    public function setAuthorName($author_id)
+
+    /**
+     * Set post author id.
+     * 
+     * @param id User identifier.
+     */
+    public function setUserId($user_id)
     {
-        $this->attributes['author_id'] = $author_id;
+        $this->attributes['user_id'] = $user_id;
     }
     
     public function comments()
@@ -57,7 +66,7 @@ class Post extends Model
     }
 
     /**
-     * Returns the User that wrote this post
+     * Returns the User that wrote this post.
      *
      * @return Illuminate\Database\Eloquent\Relations\BelongsTo
      */

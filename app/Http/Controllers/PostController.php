@@ -31,7 +31,7 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         $data["title"] = $post->getTitle();
         $data["post"] = $post;
-        $data["user"] = User::findOrFail($post->getAuthorId());
+        $data["user"] = User::findOrFail($post->getUserId());
         return view('forum.show')->with("data", $data);
     }
 
@@ -94,7 +94,7 @@ class PostController extends Controller
         Post::create([
             'title' => $request["title"],
             'content' => $request["content"], 
-            'author_id' => Auth::user()->getId()]
+            'user_id' => Auth::user()->getId()]
         );
         $data["title"] = "Created post";
         // return view('post.save')->with("data", $data);
