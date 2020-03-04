@@ -15,9 +15,18 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/forum', 'HomeController@forum')->name("forum");
 
 Route::get('/period/index', 'PeriodController@index')->name('period.index');
 Route::get('/period/new', 'PeriodController@new')->name('period.new');
 Route::get('/period/{id}', 'PeriodController@show')->name('period.show');
 Route::post('period/save', 'PeriodController@save')->name('period.save');
 Route::delete('/period/{id}', 'PeriodController@delete')->name('period.delete');
+
+// Forum routes
+Route::get('/post/index', 'PostController@index')->name("post.index");
+Route::get('/post/new', 'PostController@new')->name("post.new");
+Route::get('/post/show/{id}', 'PostController@show')->name("post.show");
+Route::post('/post/save', 'PostController@save')->name("post.save");
+Route::delete('/post/destroy/{id}', 'PostController@destroy')->name("post.destroy");
+?>
