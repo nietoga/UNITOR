@@ -25,4 +25,14 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    /**
+     * Show the forum main page.
+     * 
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function forum()
+    {
+        return view('forum.main');
+    }
 }

@@ -38,12 +38,21 @@ class User extends Authenticatable
     ];
 
     /**
-     * Returns current User id
+     * Returns User id
      *
      * @return int
      */
     public function getId() {
         return $this->id;
+    }
+
+    /**
+     * Returns User name
+     *
+     * @return string
+     */
+    public function getName() {
+        return $this->name;
     }
 
     /**
@@ -53,5 +62,14 @@ class User extends Authenticatable
      */
     public function periods() {
         return $this->hasMany(Period::class);
+    }
+
+    /**
+     * Returns the post this user wrote
+     *
+     * @return Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function post() {
+        return $this->hasMany(Post::class);
     }
 }
