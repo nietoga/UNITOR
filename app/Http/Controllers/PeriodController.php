@@ -63,7 +63,7 @@ class PeriodController extends Controller
      */
     public function show($id)
     {
-        $period = Period::findOrFail($id);
+        $period = Period::with('courses')->findOrFail($id);
 
         if ($period->user == Auth::user()) {
             return view('period.show')->with('period', $period);

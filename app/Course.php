@@ -4,20 +4,20 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Period extends Model
+class Course extends Model
 {
     /**
-     * Mass assignable fields of Period model
+     * Mass assignable fields of Course model
      *
      * @var array
      */
     protected $fillable = [
-        'user_id',
+        'period_id',
         'name',
     ];
 
     /**
-     * Returns current Period id
+     * Returns current Course id
      *
      * @return int
      */
@@ -26,7 +26,7 @@ class Period extends Model
     }
 
     /**
-     * Returns the name of the Period
+     * Returns the name of the Course
      *
      * @return string
      */
@@ -35,7 +35,7 @@ class Period extends Model
     }
 
     /**
-     * Sets the name of the Period
+     * Sets the name of the Course
      *
      * @param string $name
      * @return void
@@ -45,20 +45,11 @@ class Period extends Model
     }
 
     /**
-     * Returns the User that owns this Period
+     * Returns the Period that owns this Course
      *
      * @return Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user() {
-        return $this->belongsTo(User::class);
-    }
-
-    /**
-     * Returns the courses belonging to this Period
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function courses() {
-        return $this->hasMany(Course::class);
+    public function period() {
+        return $this->belongsTo(Period::class);
     }
 }
