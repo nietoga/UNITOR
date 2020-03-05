@@ -28,5 +28,5 @@ Route::get('/post/index', 'PostController@index')->name("post.index");
 Route::get('/post/new', 'PostController@new')->name("post.new");
 Route::get('/post/show/{id}', 'PostController@show')->name("post.show");
 Route::post('/post/save', 'PostController@save')->name("post.save");
-Route::delete('/post/destroy/{id}', 'PostController@destroy')->name("post.destroy");
+Route::delete('/post/delete/{id}', 'PostController@delete')->name("post.delete");
 ?>

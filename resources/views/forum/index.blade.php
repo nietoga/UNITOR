@@ -4,6 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            @include('util.message')
             <div class="card">
                 <div class="card-header">Posts list </div>
                 <div class="card-body">
@@ -16,7 +17,7 @@
                                     {{ $post->getTitle() }}
                                 </a>
                                 <p>{{ $post->getContent() }}</p>
-                                
+
                                 <br />
                                 <br />
                                 @endforeach

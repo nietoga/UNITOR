@@ -18,11 +18,13 @@
                         </p>
                         @endforeach
                     </div>
-                    <form action="{{ route('post.destroy', [ 'id' => $data['post']['id'] ]) }}" method="POST">
+                    @if($data["delete_btn"])
+                    <form action="{{ route('post.delete', [ 'id' => $data['post']['id'] ]) }}" method="POST">
                         @csrf
                         {{ method_field('DELETE') }}
                         <input class="btn btn-danger" type="submit" value="Delete" />
                     </form>
+                    @endif
                 </div>
             </div>
         </div>

@@ -27,26 +27,34 @@ class PostController extends Controller
     public function show($id)
     {
         $data = []; //to be sent to the view
-
         $post = Post::findOrFail($id);
         $data["title"] = $post->getTitle();
         $data["post"] = $post;
+        if ($post->user == Auth::user()) {
+            $data["delete_btn"] = true;
+        } else {
+            $data["delete_btn"] = false;
+        }
         return view('forum.show')->with("data", $data);
     }
 
     /**
-     * Delete a post along with the associated comments
+     * Delete a post along with the associated comments. Users only can delete
+     * their comments.
      * 
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id){
+    public function delete($id)
+    {
         $post = Post::findOrFail($id);
-        $post->comments()->delete();
-        $post->delete();
-        $data["title"] = "Posts list";
-        $data["posts"] = Post::all();
 
-        return view('forum.index')->with("data", $data, 'success', 'Post deleted successfully!');
+        if ($post->user == Auth::user()) {
+            $post->comments()->delete();
+            $post->delete();
+            return redirect('post/index')->with('success', 'Post deleted successfully!');
+        } else {
+            return (401);
+        }
     }
 
     /**
@@ -86,13 +94,15 @@ class PostController extends Controller
     public function save(Request $request)
     {
         Post::validate($request);
-        Post::create([
-            'title' => $request["title"],
-            'content' => $request["content"], 
-            'user_id' => Auth::user()->getId()]
+        Post::create(
+            [
+                'title' => $request["title"],
+                'content' => $request["content"],
+                'user_id' => Auth::user()->getId()
+            ]
         );
         $data["title"] = "Created post";
-        // return view('post.save')->with("data", $data);
+
         return back()->with('success', 'Post created successfully!');
     }
 }
