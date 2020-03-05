@@ -29,4 +29,6 @@ Route::get('/post/new', 'PostController@new')->name("post.new");
 Route::get('/post/show/{id}', 'PostController@show')->name("post.show");
 Route::post('/post/save', 'PostController@save')->name("post.save");
 Route::delete('/post/delete/{id}', 'PostController@delete')->name("post.delete");
+Route::post('/post/edit/{id}', 'PostController@edit')->name("post.edit");
+Route::patch('/post/update/{id}', 'PostController@update')->name("post.update");
 ?>

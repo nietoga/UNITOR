@@ -4,9 +4,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            @include('util.message')
             <div class="card">
-                <div class="card-header">Create post</div>
+                <div class="card-header">Edit post</div>
                 <div class="card-body">
                     @if($errors->any())
                     <ul id="errors">
@@ -15,11 +14,12 @@
                         @endforeach
                     </ul>
                     @endif
-                    <form class="form-group green-border-focus form-post" method="POST" action="{{ route('post.save') }}">
+                    <form class="form-group green-border-focus form-post" action="{{ route('post.update', [ 'id' => $data['post']['id'] ]) }}" method="POST">
                         @csrf
-                        <input class="form-control" type="text" placeholder="Enter title" name="title" value="{{ old('title') }}" />
-                        <textarea class="form-control" rows="4" type="text" placeholder="Enter content" name="content">{{ old('content') }}</textarea>
-                        <input class="btn btn-success" type="submit" value="Post" />
+                        {{ method_field('PATCH') }}
+                        <input class="form-control" type="text" name="title" value="{{ $data['post']->getTitle() }}" />
+                        <textarea class="form-control" rows="4" type="text" name="content">{{ $data['post']->getContent() }}</textarea>
+                        <input class="btn btn-success" type="submit" value="Update" />
                     </form>
                 </div>
             </div>

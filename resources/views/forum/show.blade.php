@@ -18,12 +18,19 @@
                         </p>
                         @endforeach
                     </div>
-                    @if($data["delete_btn"])
-                    <form action="{{ route('post.delete', [ 'id' => $data['post']['id'] ]) }}" method="POST">
-                        @csrf
-                        {{ method_field('DELETE') }}
-                        <input class="btn btn-danger" type="submit" value="Delete" />
-                    </form>
+                    @if($data["allowed_ops"])
+                    <div class="form-inline">
+                        <form class="form-group" action="{{ route('post.delete', [ 'id' => $data['post']['id'] ]) }}" method="POST">
+                            @csrf
+                            {{ method_field('DELETE') }}
+                            <input class="btn btn-danger" type="submit" value="Delete" />
+                        </form>
+
+                        <form class="form-group" action="{{ route('post.edit', [ 'id' => $data['post']['id'] ]) }}" method="POST">
+                            @csrf
+                            <input class="btn btn-warning" type="submit" value="Edit" />
+                        </form>
+                    </div>
                     @endif
                 </div>
             </div>

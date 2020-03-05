@@ -6,13 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <!-- Styles - Bootstrap is loaded locally -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/customStyle.css') }}">
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-
-    
+    <meta name="csrf-token" content="{{ csrf_token() }}"> 
 
     <title>@yield('title','Forum')</title>
 
@@ -25,6 +19,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/customStyle.css') }}">
 </head>
 
 <body>

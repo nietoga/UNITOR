@@ -31,9 +31,9 @@ class PostController extends Controller
         $data["title"] = $post->getTitle();
         $data["post"] = $post;
         if ($post->user == Auth::user()) {
-            $data["delete_btn"] = true;
+            $data["allowed_ops"] = true;
         } else {
-            $data["delete_btn"] = false;
+            $data["allowed_ops"] = false;
         }
         return view('forum.show')->with("data", $data);
     }
@@ -86,6 +86,20 @@ class PostController extends Controller
     }
 
     /**
+     * Show the form to creating a new post
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $data = []; //to be sent to the view
+        $data["title"] = "Edit post";
+        $data["post"] = Post::findOrFail($id);
+
+        return view('forum.edit')->with("data", $data);
+    }
+
+    /**
      * Store a new post in storage
      * 
      * @param  \Illuminate\Http\Request  $request
@@ -104,5 +118,25 @@ class PostController extends Controller
         $data["title"] = "Created post";
 
         return back()->with('success', 'Post created successfully!');
+    }
+
+    /**
+     * Update post in storage
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @param int Post id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        Post::validate($request);
+        $post = Post::find($id);
+        if ($post->user != Auth::user()){
+            return (401);
+        }
+        $post->title = $request->get('title');
+        $post->content = $request->get('content');
+        $post->save();
+        return redirect()->route('post.show', [ 'id' => $id ])->with('success', 'Post edited successfully!');
     }
 }
