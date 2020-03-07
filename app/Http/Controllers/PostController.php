@@ -27,7 +27,7 @@ class PostController extends Controller
     public function show($id)
     {
         $data = []; //to be sent to the view
-        $post = Post::findOrFail($id);
+        $post = Post::with("comments")->find($id);
         $data["title"] = $post->getTitle();
         $data["post"] = $post;
         if ($post->user == Auth::user()) {
@@ -72,7 +72,7 @@ class PostController extends Controller
     }
 
     /**
-     * Show the form to creating a new post
+     * Show the form to create a new post
      * 
      * @return \Illuminate\Http\Response
      */
@@ -86,7 +86,7 @@ class PostController extends Controller
     }
 
     /**
-     * Show the form to creating a new post
+     * Show the form to edit a post
      * 
      * @return \Illuminate\Http\Response
      */
@@ -121,7 +121,7 @@ class PostController extends Controller
     }
 
     /**
-     * Update post in storage
+     * Update post in storage. Users can only update their posts.
      * 
      * @param  \Illuminate\Http\Request  $request
      * @param int Post id

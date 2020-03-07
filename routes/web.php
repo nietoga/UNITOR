@@ -31,4 +31,8 @@ Route::post('/post/save', 'PostController@save')->name("post.save");
 Route::delete('/post/delete/{id}', 'PostController@delete')->name("post.delete");
 Route::post('/post/edit/{id}', 'PostController@edit')->name("post.edit");
 Route::patch('/post/update/{id}', 'PostController@update')->name("post.update");
+
+// Comments routes
+Route::post('/comment/save/{post_id}', 'CommentController@save')->name("comment.save");
+Route::delete('/comment/delete/{id}', 'CommentController@delete')->name("comment.delete");
 ?>
