@@ -1,3 +1,6 @@
+<?php
+
+
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
@@ -10,7 +13,7 @@ class Activity extends Model
      * @var array
      */
     protected $fillable = [
-        'activity_id',
+        'course_id',
         'name',
         'grade',
         'porcentage'
@@ -87,7 +90,7 @@ class Activity extends Model
      *
      * @return Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function period() {
+    public function course() {
         return $this->belongsTo(Course::class);
     }
 }

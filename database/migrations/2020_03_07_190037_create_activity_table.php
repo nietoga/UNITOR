@@ -13,13 +13,13 @@ class CreateActivityTable extends Migration
      */
     public function up()
     {
-        Schema::create('activity', function (Blueprint $table) {
+        Schema::create('activities', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('course_id')->unsigned();
             $table->foreign('course_id')->references('id')->on('courses');
             $table->string('name');
-            $table->float('grade');
-            $table->float('porcentage');
+            $table->float('grade')->nullable();
+            $table->float('porcentage')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateActivityTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('activity');
+        Schema::dropIfExists('activities');
     }
 }

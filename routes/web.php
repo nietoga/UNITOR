@@ -28,6 +28,12 @@ Route::get('/course/show/{id}', 'CourseController@show')->name('course.show');
 Route::post('/course/save', 'CourseController@save')->name('course.save');
 Route::delete('/course/delete/{id}', 'CourseController@delete')->name('course.delete');
 
+//Activity routes
+Route::get('/activity/new', 'ActivityController@new')->name('activity.new');
+Route::get('/activity/show/{id}', 'ActivityController@show')->name('activity.show');
+Route::post('/activity/save', 'ActivityController@save')->name('activity.save');
+Route::delete('/activity/delete/{id}', 'ActivityController@delete')->name('activity.delete');
+
 // Forum routes
 Route::get('/post/index', 'PostController@index')->name("post.index");
 Route::get('/post/new', 'PostController@new')->name("post.new");
