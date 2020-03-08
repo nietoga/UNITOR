@@ -57,6 +57,20 @@ class CommentController extends Controller
     }
 
     /**
+     * Show the form to edit a comment
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $data = []; //to be sent to the view
+        $data["title"] = "Edit comment";
+        $data["comment"] = Comment::findOrFail($id);
+
+        return view('comment.edit')->with("data", $data);
+    }
+
+    /**
      * Update comment in storage. Users can only update their comments.
      * 
      * @param  \Illuminate\Http\Request  $request
@@ -70,9 +84,8 @@ class CommentController extends Controller
         if ($comment->user != Auth::user()) {
             return (401);
         }
-        $comment->title = $request->get('title');
-        $comment->content = $request->get('content');
+        $comment->setDescription($request->get('description'));
         $comment->save();
-        return redirect()->route('comment.show', ['id' => $id])->with('success', 'Comment edited successfully!');
+        return redirect()->route('post.show', ['id' => $comment->post->getId()])->with('success', 'Comment edited successfully!');
     }
 }
