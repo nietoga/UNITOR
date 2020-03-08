@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}"> 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title','Forum')</title>
 
     <!-- Scripts TODO: when I put the others js, the app.js doesn't work-->
-    <script src="{{ asset('js/app.js') }}" defer></script>    
+    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -86,5 +86,7 @@
         </main>
     </div>
 </body>
-
+<footer>
+    <a href="https://icons8.com/">icons by Icons8</a>
+</footer>
 </html>
