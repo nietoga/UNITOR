@@ -33,7 +33,7 @@ Route::post('/post/edit/{id}', 'PostController@edit')->name('post.edit');
 Route::patch('/post/update/{id}', 'PostController@update')->name('post.update');
 
 // Comments routes
-Route::post('/comment/save/{post_id}', 'CommentController@save')->name('comment.save');
+Route::post('/comment/save', 'CommentController@save')->name('comment.save');
 Route::delete('/comment/delete/{id}', 'CommentController@delete')->name('comment.delete');
 Route::post('/commment/edit/{id}', 'CommentController@edit')->name('comment.edit');
 Route::patch('/comment/update/{id}', 'CommentController@update')->name('comment.update');

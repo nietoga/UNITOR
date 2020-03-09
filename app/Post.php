@@ -8,7 +8,11 @@ use Illuminate\Http\Request;
 class Post extends Model
 {
     //attributes id, title, content, user_id, created_at, updated_at
-    protected $fillable = ['title', 'content', 'user_id'];
+    protected $fillable = [
+        'title', 
+        'content', 
+        'user_id',
+    ];
 
     // Id
     public function getId()

@@ -10,7 +10,11 @@ use App\User;
 class Comment extends Model
 {
     //attributes id, description, post_id, created_at, updated_at
-    protected $fillable = ['description', 'post_id', 'user_id'];
+    protected $fillable = [
+        'description',
+        'post_id',
+        'user_id',
+    ];
 
     public function getId()
     {
@@ -37,9 +41,9 @@ class Comment extends Model
         return $this->attributes['post_id'];
     }
 
-    public function setPostId($user_id)
+    public function setPostId($post_id)
     {
-        $this->attributes['user_id'] = $user_id;
+        $this->attributes['post_id'] = $post_id;
     }
 
     public function getUserId()

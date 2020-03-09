@@ -77,8 +77,9 @@
                             @endforeach
                         </ul>
                         @endif
-                        <form class="form-group" action="{{ route('comment.save', [ 'post_id' => $data['post']['id'] ]) }}" method="POST">
+                        <form class="form-group" action="{{ route('comment.save') }}" method="POST">
                             @csrf
+                            <input type="hidden" name="post_id" value="{{ $data['post']->getId() }}">
                             <textarea class="form-control" rows="4" type="text" placeholder="Add your answer" name="description"></textarea>
                             <input class="btn btn-secondary" type="submit" value="Comment" />
                         </form>

@@ -43,13 +43,13 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function save(Request $request, $post_id)
+    public function save(Request $request)
     {
         Comment::validate($request);
         Comment::create([
             'user_id' => Auth::user()->getId(),
             'description' => $request["description"],
-            'post_id' => $post_id
+            'post_id' => $request["post_id"]
         ]);
         $data["title"] = "Created comment";
 
