@@ -52,8 +52,13 @@ class CourseController extends Controller
      */
     public function show($id)
     {
-        $course = Course::findOrFail($id);
+        //$data = [];
+        //$data['course'] = Course::findOrFail($id);
+        //$data['activity'] = Activity::findOrFail($id);
+        $course = Course::with('activities')->findOrFail($id);
+        //$activity = Activity::findOrFail($id);
         return view('course.show')->with('course', $course);
+        //return view('course.show')->with($data);
     }
 
     /**

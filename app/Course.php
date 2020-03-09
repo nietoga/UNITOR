@@ -54,6 +54,6 @@ class Course extends Model
     }
 
     public function activities() {
-        return $this->hasMany(Course::class);
+        return $this->hasMany(Activity::class);
     }
 }
