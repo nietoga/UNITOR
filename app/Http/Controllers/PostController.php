@@ -27,26 +27,34 @@ class PostController extends Controller
     public function show($id)
     {
         $data = []; //to be sent to the view
-
-        $post = Post::findOrFail($id);
+        $post = Post::with("comments")->find($id);
         $data["title"] = $post->getTitle();
         $data["post"] = $post;
+        if ($post->user == Auth::user()) {
+            $data["allowed_ops"] = true;
+        } else {
+            $data["allowed_ops"] = false;
+        }
         return view('forum.show')->with("data", $data);
     }
 
     /**
-     * Delete a post along with the associated comments
+     * Delete a post along with the associated comments. Users only can delete
+     * their comments.
      * 
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id){
+    public function delete($id)
+    {
         $post = Post::findOrFail($id);
-        $post->comments()->delete();
-        $post->delete();
-        $data["title"] = "Posts list";
-        $data["posts"] = Post::all();
 
-        return view('forum.index')->with("data", $data, 'success', 'Post deleted successfully!');
+        if ($post->user == Auth::user()) {
+            $post->comments()->delete();
+            $post->delete();
+            return redirect('post/index')->with('success', 'Post deleted successfully!');
+        } else {
+            return (401);
+        }
     }
 
     /**
@@ -64,7 +72,7 @@ class PostController extends Controller
     }
 
     /**
-     * Show the form to creating a new post
+     * Show the form to create a new post
      * 
      * @return \Illuminate\Http\Response
      */
@@ -78,6 +86,20 @@ class PostController extends Controller
     }
 
     /**
+     * Show the form to edit a post
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $data = []; //to be sent to the view
+        $data["title"] = "Edit post";
+        $data["post"] = Post::findOrFail($id);
+
+        return view('forum.edit')->with("data", $data);
+    }
+
+    /**
      * Store a new post in storage
      * 
      * @param  \Illuminate\Http\Request  $request
@@ -86,13 +108,35 @@ class PostController extends Controller
     public function save(Request $request)
     {
         Post::validate($request);
-        Post::create([
-            'title' => $request["title"],
-            'content' => $request["content"], 
-            'user_id' => Auth::user()->getId()]
+        Post::create(
+            [
+                'title' => $request["title"],
+                'content' => $request["content"],
+                'user_id' => Auth::user()->getId()
+            ]
         );
         $data["title"] = "Created post";
-        // return view('post.save')->with("data", $data);
+
         return back()->with('success', 'Post created successfully!');
+    }
+
+    /**
+     * Update post in storage. Users can only update their posts.
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @param int Post id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        Post::validate($request);
+        $post = Post::find($id);
+        if ($post->user != Auth::user()){
+            return (401);
+        }
+        $post->title = $request->get('title');
+        $post->content = $request->get('content');
+        $post->save();
+        return redirect()->route('post.show', [ 'id' => $id ])->with('success', 'Post edited successfully!');
     }
 }

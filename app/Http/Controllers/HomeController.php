@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App;
 
 class HomeController extends Controller
 {
@@ -17,12 +18,25 @@ class HomeController extends Controller
     }
 
     /**
+     * Change the language use in the app
+     * 
+     * @param string Language indenfication
+     */
+    public function lang($locale)
+    {
+        App::setLocale($locale);
+        session()->put('locale', $locale);
+        return redirect()->back();
+    }
+
+    /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
+        session()->put('module', 'app');
         return view('home');
     }
 
@@ -33,6 +47,7 @@ class HomeController extends Controller
      */
     public function forum()
     {
+        session()->put('module', 'forum');
         return view('forum.main');
     }
 }

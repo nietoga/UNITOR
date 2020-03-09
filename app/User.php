@@ -65,11 +65,20 @@ class User extends Authenticatable
     }
 
     /**
-     * Returns the post this user wrote
+     * Returns the posts this user wrote
      *
      * @return Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function post() {
+    public function posts() {
         return $this->hasMany(Post::class);
+    }
+
+    /**
+     * Returns the comments this user wrote
+     *
+     * @return Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function comments() {
+        return $this->hasMany(Comment::class);
     }
 }
