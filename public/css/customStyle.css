@@ -71,3 +71,8 @@ li.list-group-item:hover {
 .red {
     border: 1px solid red;
 }
+
+.language-label{
+    font-size: 13px;
+    color: #949494;
+}

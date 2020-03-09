@@ -9,7 +9,7 @@
                 </div>
                 <div class="card-body">
                     <div class="mic-info">
-                        <p>By: <b>{{ $data["post"]->user == Auth::user() ? "Me":$data["post"]->user->getName() }}</b> on {{ $data["post"]->created_at->format("d/m/Y") }}</p>
+                        <p>{{__('messages.by')}}: <b>{{ $data["post"]->user == Auth::user() ? __('messages.me'):$data["post"]->user->getName() }}</b> {{__('messages.on')}} {{ $data["post"]->created_at->format("d/m/Y") }}</p>
                     </div>
                     <p>{{ $data["post"]["content"] }}</p>
                     @if($data["allowed_ops"])
@@ -17,12 +17,12 @@
                         <form class="form-group" action="{{ route('post.delete', [ 'id' => $data['post']['id'] ]) }}" method="POST">
                             @csrf
                             {{ method_field('DELETE') }}
-                            <input class="btn btn-danger" type="submit" value="Delete" />
+                            <input class="btn btn-danger" type="submit" value="{{__('messages.delete')}}" />
                         </form>
 
                         <form class="form-group" action="{{ route('post.edit', [ 'id' => $data['post']['id'] ]) }}" method="POST">
                             @csrf
-                            <input class="btn btn-warning" type="submit" value="Edit" />
+                            <input class="btn btn-warning" type="submit" value="{{__('messages.edit')}}" />
                         </form>
                     </div>
                     @endif
@@ -38,7 +38,7 @@
                                 <div class="row">
                                     <div class="col-xs-9 col-md-10">
                                         <div class="mic-info">
-                                            By: <b> {{ $comment->user == Auth::user() ? "Me":$comment->user->getName() }} </b> on {{ $comment->updated_at->format("d/m/Y") }}
+                                            {{__('messages.by')}}: <b> {{ $comment->user == Auth::user() ? __('messages.me'):$comment->user->getName() }} </b> {{__('messages.on')}} {{ $comment->updated_at->format("d/m/Y") }}
                                         </div>
                                         <div class="comment-text">
                                             {{ $comment->getDescription() }}
@@ -80,8 +80,8 @@
                         <form class="form-group" action="{{ route('comment.save') }}" method="POST">
                             @csrf
                             <input type="hidden" name="post_id" value="{{ $data['post']->getId() }}">
-                            <textarea class="form-control" rows="4" type="text" placeholder="Add your answer" name="description"></textarea>
-                            <input class="btn btn-secondary" type="submit" value="Comment" />
+                            <textarea class="form-control" rows="4" type="text" placeholder="{{__('messages.add-comment')}}" name="description"></textarea>
+                            <input class="btn btn-secondary" type="submit" value="{{__('messages.comment-btn')}}" />
                         </form>
                     </div>
                 </div>

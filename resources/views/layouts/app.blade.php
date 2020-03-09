@@ -30,24 +30,14 @@
                     Unitor
                 </a>
                 @if(session('module') == 'app')
-                <a class="navbar-brand" href="{{ route('forum') }}">
-                    Forum
-                </a>
+                <a class="navbar-brand" href="{{ route('forum') }}">{{__('messages.forum-title')}}</a>
                 @else
-                <a class="navbar-brand" href="{{ route('post.index') }}">
-                    Posts
-                </a>
-                <a class="navbar-brand" href="{{ route('post.new' ) }}">
-                    New Post
-                </a>
+                <a class="navbar-brand" href="{{ route('post.index') }}">{{__('messages.posts')}}</a>
+                <a class="navbar-brand" href="{{ route('post.new' ) }}">{{__('messages.new-post')}}</a>
                 @endif
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
-                <li><a href="lang/en"><i class="fa fa-language"></i> EN</a></li>
-
-                <li><a href="lang/es"><i class="fa fa-language"></i> ES</a></li>
 
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -88,6 +78,10 @@
                         @endguest
                     </ul>
                 </div>
+            </div>
+            <div>
+                <span class="language-label">{{ __('messages.lang_sel') }}:</span>
+                <a href="/lang/en"><i class="fa fa-language"></i>EN</a> | <a href="/lang/es"><i class="fa fa-language"></i>ES</a>
             </div>
         </nav>
 

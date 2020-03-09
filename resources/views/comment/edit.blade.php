@@ -1,11 +1,11 @@
-@extends('layouts.forum')
+@extends('layouts.app')
 @section("title", $data["title"])
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Edit post</div>
+                <div class="card-header">{{__('messages.edit')}}</div>
                 <div class="card-body">
                     @if($errors->any())
                     <ul id="errors">
@@ -18,7 +18,7 @@
                         @csrf
                         {{ method_field('PATCH') }}
                         <textarea class="form-control" rows="4" type="text" name="description">{{ $data['comment']->getDescription() }}</textarea>
-                        <input class="btn btn-success" type="submit" value="Update" />
+                        <input class="btn btn-success" type="submit" value="{{__('messages.update')}}" />
                     </form>
                 </div>
             </div>

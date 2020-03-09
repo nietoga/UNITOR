@@ -18,7 +18,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/forum', 'HomeController@forum')->name('forum');
 
 //Localization
-Route::get('lang/{locale}', 'HomeController@lang');
+Route::get('/lang/{locale}', 'HomeController@lang');
 
 
 Route::get('/period/index', 'PeriodController@index')->name('period.index');
