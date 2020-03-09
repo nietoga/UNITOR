@@ -39,7 +39,6 @@ class ActivityController extends Controller
         $request->validate([
             "name" => "required"
         ]);
-        //dd($request->all());
 
         Activity::create($request->only(["course_id", "name"]));
 
