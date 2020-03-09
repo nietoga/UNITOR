@@ -2,13 +2,13 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
+use App\Course;
 use App\Period;
-use App\User;
 use Faker\Generator as Faker;
 
-$factory->define(Period::class, function (Faker $faker) {
+$factory->define(Course::class, function (Faker $faker) {
     return [
-        'user_id' => User::all()->random()->getId(),
+        'period_id' => Period::all()->random()->getId(),
         'name' => $faker->year(),
     ];
 });

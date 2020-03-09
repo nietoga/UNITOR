@@ -23,9 +23,14 @@ Route::get('lang/{locale}', 'HomeController@lang');
 
 Route::get('/period/index', 'PeriodController@index')->name('period.index');
 Route::get('/period/new', 'PeriodController@new')->name('period.new');
-Route::get('/period/{id}', 'PeriodController@show')->name('period.show');
-Route::post('period/save', 'PeriodController@save')->name('period.save');
-Route::delete('/period/{id}', 'PeriodController@delete')->name('period.delete');
+Route::get('/period/show/{id}', 'PeriodController@show')->name('period.show');
+Route::post('/period/save', 'PeriodController@save')->name('period.save');
+Route::delete('/period/delete/{id}', 'PeriodController@delete')->name('period.delete');
+
+Route::get('/course/new', 'CourseController@new')->name('course.new');
+Route::get('/course/show/{id}', 'CourseController@show')->name('course.show');
+Route::post('/course/save', 'CourseController@save')->name('course.save');
+Route::delete('/course/delete/{id}', 'CourseController@delete')->name('course.delete');
 
 // Forum routes
 Route::get('/post/index', 'PostController@index')->name('post.index');
@@ -41,4 +46,3 @@ Route::post('/comment/save', 'CommentController@save')->name('comment.save');
 Route::delete('/comment/delete/{id}', 'CommentController@delete')->name('comment.delete');
 Route::post('/commment/edit/{id}', 'CommentController@edit')->name('comment.edit');
 Route::patch('/comment/update/{id}', 'CommentController@update')->name('comment.update');
-?>
