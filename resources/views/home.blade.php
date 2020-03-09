@@ -13,9 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    You are logged in!
-
+                    <p>{{ __('messages.welcome') }}</p>
                     <form action="{{ route('period.index') }}" method="get">
                         <button type="submit" class="btn btn-primary">Periods</button>
                     </form>

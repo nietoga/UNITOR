@@ -1,4 +1,4 @@
-footer{
+.app-footer{
     padding: 10px;
 }
 
@@ -32,7 +32,7 @@ li.list-group-item:hover {
     background-color: rgba(86, 61, 124, .1);
 }
 
-.list-group{
+.list-group {
     margin-top: 10px;
 }
 
@@ -41,7 +41,7 @@ li.list-group-item:hover {
     font-size: 12px;
 }
 
-.card-body{
+.card-body {
     padding-top: 5px;
 }
 
@@ -49,25 +49,25 @@ li.list-group-item:hover {
     font-size: 14px;
 }
 
-.comments-btns{
-    margin:0px;
+.comments-btns {
+    margin: 0px;
     margin-right: 2px;
 }
 
-.comments-btns:hover{
-    margin:0px;
+.comments-btns:hover {
+    margin: 0px;
     margin-right: 2px;
     background-color: #d5d7db;
 }
 
-.btns-box{
+.btns-box {
     padding: 0px;
 }
 
-.add-comment{
+.add-comment {
     margin-top: 30px;
 }
 
-.red{
+.red {
     border: 1px solid red;
 }

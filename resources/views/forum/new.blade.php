@@ -1,4 +1,4 @@
-@extends('layouts.forum')
+@extends('layouts.app')
 @section("title", $data["title"])
 @section('content')
 <div class="container">
