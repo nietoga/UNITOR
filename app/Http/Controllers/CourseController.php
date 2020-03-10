@@ -36,7 +36,8 @@ class CourseController extends Controller
      */
     public function save(Request $request)
     {
-        $course = Course::create($request->only([
+        Course::validate($request);
+        Course::create($request->only([
             'period_id',
             'name',
         ]));

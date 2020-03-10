@@ -47,6 +47,7 @@ class PeriodController extends Controller
      */
     public function save(Request $request)
     {
+        Period::validate($request);
         Period::create([
             'user_id' => Auth::user()->getId(),
             'name' => $request['name'],

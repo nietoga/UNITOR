@@ -36,11 +36,7 @@ class ActivityController extends Controller
      */
     public function save(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'percentage' => 'required',
-        ]);
-
+        Activity::validate($request);
         Activity::create($request->only(['course_id', 'name', 'percentage', 'grade']));
 
         return redirect(route('course.show', $request['course_id']));

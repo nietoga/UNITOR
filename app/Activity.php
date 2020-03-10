@@ -4,6 +4,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class Activity extends Model
 {
@@ -92,5 +93,14 @@ class Activity extends Model
      */
     public function course() {
         return $this->belongsTo(Course::class);
+    }
+
+    public static function validate(Request $request) {
+        $request->validate([
+            'course_id' => 'required',
+            'name' => 'required',
+            'percentage' => 'required|numeric|min:0|max:100',
+            'grade' => 'numeric|min:0|max:5',
+        ]);
     }
 }

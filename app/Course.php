@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class Course extends Model
 {
@@ -68,5 +69,12 @@ class Course extends Model
         }
 
         return (300 - $acum) / $percentLeft;
+    }
+
+    public static function validate(Request $request) {
+        $request->validate([
+            'period_id' => 'required',
+            'name' => 'required',
+        ]);
     }
 }

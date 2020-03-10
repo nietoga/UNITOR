@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class Period extends Model
 {
@@ -60,5 +61,11 @@ class Period extends Model
      */
     public function courses() {
         return $this->hasMany(Course::class);
+    }
+
+    public static function validate(Request $request) {
+        $request->validate([
+            'name' => 'required',
+        ]);
     }
 }
