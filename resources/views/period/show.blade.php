@@ -19,13 +19,13 @@
 
                     <form action="{{ route('course.new') }}" method="get">
                         <input type="hidden" name="period_id" value="{{ $period->getId() }}">
-                        <button type="submit" class="btn btn-primary">New Course</button>
+                        <button type="submit" class="btn btn-primary">{{ __('messages.new-course') }}</button>
                     </form>
 
                     <form action="{{ route('period.delete', $period->getId()) }}" method="post">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <button type="submit" class="btn btn-danger">{{ __('messages.delete') }}</button>
                     </form>
                 </div>
             </div>

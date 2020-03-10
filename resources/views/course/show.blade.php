@@ -17,16 +17,16 @@
                         @endforeach
                     </ul>
 
-                    <h5>YOU NEED: {{ $data['needed'] }} to pass this course!</h5>
+                    <h5>{{ __('messages.you-need') }} {{ $data['needed'] }}</h5>
 
                     <form action="{{ route('activity.new') }}" method="get">
                         <input type="hidden" name="course_id" value="{{ $data['course']->getId() }}">
-                        <button type="submit" class="btn btn-primary">New Activity</button>
+                        <button type="submit" class="btn btn-primary">{{ __('messages.new-activity') }}</button>
                     </form>
                     <form action="{{ route('course.delete', $data['course']->getId()) }}" method="post">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <button type="submit" class="btn btn-danger">{{ __('messages.delete') }}</button>
                     </form>
                 </div>
             </div>

@@ -31,4 +31,12 @@ return [
     'enter-name' => 'Ingrese el nombre',
     'panel' => 'Panel',
     'report' => 'Reportar',
+    'new-activity' => 'Nueva Actividad',
+    'you-need' => 'Necesitas la siguiente nota en el final: ',
+    'enter-percentage' => 'Ingrese el porcentaje',
+    'enter-grade' => 'Ingrese la nota',
+    'percentage' => 'Porcentaje',
+    'grade' => 'Nota',
+    'new-course' => 'Nuevo Curso',
+    'name' => 'Nombre',
 ];

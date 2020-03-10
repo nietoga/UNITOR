@@ -18,7 +18,7 @@
                     <form action="{{ route('activity.delete', $activity->getId()) }}" method="post">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <button type="submit" class="btn btn-danger">{{ __('messages.delete') }}</button>
                     </form>
                 </div>
             </div>
