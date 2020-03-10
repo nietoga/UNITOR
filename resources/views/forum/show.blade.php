@@ -32,7 +32,7 @@
                 <div class="card-header">Comments</div>
                 <div class="card-body">
                     <ul class="list-group">
-                        @foreach($data["post"]["comments"] as $comment)
+                        @foreach($data["comments"] as $comment)
                         <div class="">
                             <li class="list-group-item red">
                                 <div class="row">
