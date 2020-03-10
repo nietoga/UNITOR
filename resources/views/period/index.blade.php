@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Periods</div>
+                <div class="card-header">{{__('messages.periods')}}</div>
 
                 <div class="card-body">
                     <ul>
@@ -19,7 +19,7 @@
                     </ul>
 
                     <form action="{{ route('period.new') }}" method="get">
-                        <button type="submit" class="btn btn-primary">New Period</button>
+                        <button type="submit" class="btn btn-primary">{{__('messages.new-period')}}</button>
                     </form>
                 </div>
             </div>

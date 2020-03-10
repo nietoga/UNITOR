@@ -52,4 +52,8 @@ class Course extends Model
     public function period() {
         return $this->belongsTo(Period::class);
     }
+
+    public function activities() {
+        return $this->hasMany(Activity::class);
+    }
 }

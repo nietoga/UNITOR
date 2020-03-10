@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Edit post</div>
+                <div class="card-header">{{__('messages.edit')}}</div>
                 <div class="card-body">
                     @if($errors->any())
                     <ul id="errors">
@@ -19,7 +19,7 @@
                         {{ method_field('PATCH') }}
                         <input class="form-control" type="text" name="title" value="{{ $data['post']->getTitle() }}" />
                         <textarea class="form-control" rows="4" type="text" name="content">{{ $data['post']->getContent() }}</textarea>
-                        <input class="btn btn-success" type="submit" value="Update" />
+                        <input class="btn btn-success" type="submit" value="{{__('messages.update')}}" />
                     </form>
                 </div>
             </div>

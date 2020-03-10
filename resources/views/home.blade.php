@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">{{__('messages.main')}}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -15,7 +15,7 @@
                     @endif
                     <p>{{ __('messages.welcome') }}</p>
                     <form action="{{ route('period.index') }}" method="get">
-                        <button type="submit" class="btn btn-primary">Periods</button>
+                        <button type="submit" class="btn btn-primary">{{__('messages.periods')}}</button>
                     </form>
                 </div>
             </div>

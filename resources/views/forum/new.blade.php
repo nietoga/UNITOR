@@ -6,7 +6,7 @@
         <div class="col-md-8">
             @include('util.message')
             <div class="card">
-                <div class="card-header">Create post</div>
+                <div class="card-header">{{__('messages.create')}}</div>
                 <div class="card-body">
                     @if($errors->any())
                     <ul id="errors">
@@ -17,9 +17,9 @@
                     @endif
                     <form class="form-group green-border-focus form-post" method="POST" action="{{ route('post.save') }}">
                         @csrf
-                        <input class="form-control" type="text" placeholder="Enter title" name="title" value="{{ old('title') }}" />
-                        <textarea class="form-control" rows="4" type="text" placeholder="Enter content" name="content">{{ old('content') }}</textarea>
-                        <input class="btn btn-success" type="submit" value="Post" />
+                        <input class="form-control" type="text" placeholder="{{__('messages.enter-title')}}" name="title" value="{{ old('title') }}" />
+                        <textarea class="form-control" rows="4" type="text" placeholder="{{__('messages.enter-content')}}" name="content">{{ old('content') }}</textarea>
+                        <input class="btn btn-success" type="submit" value="{{__('messages.post-btn')}}" />
                     </form>
                 </div>
             </div>

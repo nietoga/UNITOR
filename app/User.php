@@ -86,6 +86,15 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class);
     }
 
+    /**
+     * Returns the votes this user has done
+     *
+     * @return Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function commentVotes() {
+        return $this->hasMany(CommentVote::class);
+    }
+
     public function isAdmin() {
         return $this->type === User::ADMIN_TYPE;
     }
