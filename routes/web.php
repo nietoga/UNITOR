@@ -46,3 +46,6 @@ Route::post('/comment/save', 'CommentController@save')->name('comment.save');
 Route::delete('/comment/delete/{id}', 'CommentController@delete')->name('comment.delete');
 Route::post('/commment/edit/{id}', 'CommentController@edit')->name('comment.edit');
 Route::patch('/comment/update/{id}', 'CommentController@update')->name('comment.update');
+
+Route::get('/admin', 'AdminController@index');
+Route::get('/admin/index', 'AdminController@index')->name('admin.index');
