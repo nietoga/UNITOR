@@ -77,7 +77,7 @@
                                             </form>
                                             @endif
                                             @if($data["allowed_ops"])
-                                            <a class="btn form-group comments-btns fixed" href="/post/{{$data['post']->getId()}}/fix_comment/{{$comment->getId()}}">
+                                            <a class="btn form-group comments-btns fixed-btn" href="/post/{{$data['post']->getId()}}/fix_comment/{{$comment->getId()}}">
                                                 @if($comment->getFixed())
                                                 <img src="https://img.icons8.com/ios-filled/26/000000/star.png">
                                                 @else
@@ -86,13 +86,21 @@
                                             </a>
                                             @endif
                                         </div>
+                                        <div class="row">
+                                            <form class="form-group report-container" action="{{ route('comment.report', [ 'id' => $comment->getId() ]) }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="reported" value="1">
+                                                <button class="report-btn comments-btns" type="submit">
+                                                    {{__('messages.report')}}
+                                                </button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </li>
                         </div>
+                        @endforeach
                     </ul>
-                    @endforeach
-
                     <div class="add-comment">
                         @if($errors->any())
                         <ul id="errors">

@@ -17,6 +17,7 @@ class Comment extends Model
         'user_id',
         'score',
         'fixed',
+        'reported',
     ];
 
     public function getId()
@@ -77,6 +78,16 @@ class Comment extends Model
     public function setFixed($fixed)
     {
         $this->attributes['fixed'] = $fixed;
+    }
+
+    public function getReported()
+    {
+        return $this->attributes['reported'];
+    }
+
+    public function setReported($reported)
+    {
+        $this->attributes['reported'] = $reported;
     }
 
     public function isUp($user_id){

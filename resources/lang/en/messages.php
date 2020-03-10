@@ -29,4 +29,7 @@ return [
     'periods' => 'Periods',
     'new-period' => 'New period',
     'enter-name' => 'Enter name',
+    'panel' => 'Panel',
+    'report' => 'Report',
+    
 ];

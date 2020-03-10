@@ -29,11 +29,11 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     Unitor
                 </a>
-                @if(session('module') == 'app')
-                <a class="navbar-brand" href="{{ route('forum') }}">{{__('messages.forum-title')}}</a>
-                @else
+                @if(session('module') == 'forum')
                 <a class="navbar-brand" href="{{ route('post.index') }}">{{__('messages.posts')}}</a>
                 <a class="navbar-brand" href="{{ route('post.new' ) }}">{{__('messages.new-post')}}</a>
+                @else
+                <a class="navbar-brand" href="{{ route('forum') }}">{{__('messages.forum-title')}}</a>
                 @endif
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -92,7 +92,7 @@
 </body>
 <footer>
     <div class="app-footer">
-        @if(session('module') == 'forum')
+        @if(session('module') == 'forum' or session('module') == 'use-icons' )
         <a href="https://icons8.com/" target="_blank">icons by Icons8</a>
         @endif
     </div>

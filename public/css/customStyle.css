@@ -55,8 +55,6 @@ li.list-group-item:hover {
 }
 
 .comments-btns:hover {
-    margin: 0px;
-    margin-right: 2px;
     background-color: #d5d7db;
 }
 
@@ -87,7 +85,7 @@ li.list-group-item:hover {
     margin: 10px 0px 10px 0px;
 }
 
-.comment-score-btn{
+.comment-score-btn {
     font-weight: bold;
     font-size: 12px;
 }
@@ -97,13 +95,27 @@ li.list-group-item:hover {
     cursor: default;
     text-decoration: none;
     color: black;
+    background-color: #d9dbd9;
+    border-color: transparent;
+}
+
+.report-container{
+    text-align: center;
+    width: 100%;
+}
+
+.report-btn {
     background-color: transparent;
+    border: none;
+    padding: 2px;
 }
 
-.fixed{
+.comments-btns-container {
+    width: 100%;
     float: right;
 }
 
-.comments-btns-container{
-    float: right;
+.fixed-btn {
+    margin-left:auto; 
+    margin-right:0;
 }

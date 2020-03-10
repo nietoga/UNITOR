@@ -29,4 +29,6 @@ return [
     'periods' => 'Periodos',
     'new-period' => 'Nuevo periodo',
     'enter-name' => 'Ingrese el nombre',
+    'panel' => 'Panel',
+    'report' => 'Reportar',
 ];
