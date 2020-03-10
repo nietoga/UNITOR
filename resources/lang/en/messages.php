@@ -5,6 +5,7 @@ return [
                 planify your study time to gain better results and stay more satisfied 
                 with your performance. It also provides you a forum where ask to other 
                 users for problems and questions you have about your homeworks.',
+    'admin_title' => 'Adminitration Page. There are the reported messages',
     'lang_sel' => 'language',
     'posts' => 'Posts',
     'new-post' => 'New post',
@@ -27,5 +28,5 @@ return [
     'main' => 'Main page',
     'periods' => 'Periods',
     'new-period' => 'New period',
-    'enter-name' => 'Enter name'
+    'enter-name' => 'Enter name',
 ];

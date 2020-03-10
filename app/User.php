@@ -10,6 +10,9 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    const ADMIN_TYPE = 'admin';
+    const DEFAULT_TYPE = 'default';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -17,6 +20,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name', 'email', 'password',
+        'type',
     ];
 
     /**
@@ -89,5 +93,9 @@ class User extends Authenticatable
      */
     public function commentVotes() {
         return $this->hasMany(CommentVote::class);
+    }
+
+    public function isAdmin() {
+        return $this->type === User::ADMIN_TYPE;
     }
 }

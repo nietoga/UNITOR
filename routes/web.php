@@ -55,3 +55,6 @@ Route::post('/commment/edit/{id}', 'CommentController@edit')->name('comment.edit
 Route::patch('/comment/update/{id}', 'CommentController@update')->name('comment.update');
 Route::get('/comment/{id}/vote-up', 'CommentController@voteUp')->name('comment.voteUp');
 Route::get('/comment/{id}/vote-down', 'CommentController@voteDown')->name('comment.voteDown');
+
+Route::get('/admin', 'AdminController@index');
+Route::get('/admin/index', 'AdminController@index')->name('admin.index');
