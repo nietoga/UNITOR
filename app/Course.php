@@ -56,4 +56,17 @@ class Course extends Model
     public function activities() {
         return $this->hasMany(Activity::class);
     }
+
+    public function howMuchDoINeed() {
+        $activities = $this->activities()->get();
+        $acum = 0;
+        $percentLeft = 100;
+
+        foreach($activities as $activity) {
+            $acum = $acum + $activity->getGrade() * $activity->getPercentage();
+            $percentLeft = $percentLeft + $activity->getPercentage();
+        }
+
+        return (300 - $acum) / $percentLeft;
+    }
 }

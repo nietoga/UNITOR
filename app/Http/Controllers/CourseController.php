@@ -53,7 +53,14 @@ class CourseController extends Controller
     public function show($id)
     {
         $course = Course::with('activities')->findOrFail($id);
-        return view('course.show')->with('course', $course);
+        $needed = $course->howMuchDoINeed();
+
+        $data = [
+            'course' => $course,
+            'needed' => $needed,
+        ];
+
+        return view('course.show')->with('data', $data);
     }
 
     /**
