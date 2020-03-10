@@ -18,7 +18,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/forum', 'HomeController@forum')->name('forum');
 
 //Localization
-Route::get('lang/{locale}', 'HomeController@lang');
+Route::get('/lang/{locale}', 'HomeController@lang');
 
 
 Route::get('/period/index', 'PeriodController@index')->name('period.index');
@@ -46,9 +46,12 @@ Route::post('/post/save', 'PostController@save')->name('post.save');
 Route::delete('/post/delete/{id}', 'PostController@delete')->name('post.delete');
 Route::post('/post/edit/{id}', 'PostController@edit')->name('post.edit');
 Route::patch('/post/update/{id}', 'PostController@update')->name('post.update');
+Route::get('/post/{post_id}/fix_comment/{comment_id}', 'PostController@fix')->name('post.fix');
 
 // Comments routes
 Route::post('/comment/save', 'CommentController@save')->name('comment.save');
 Route::delete('/comment/delete/{id}', 'CommentController@delete')->name('comment.delete');
 Route::post('/commment/edit/{id}', 'CommentController@edit')->name('comment.edit');
 Route::patch('/comment/update/{id}', 'CommentController@update')->name('comment.update');
+Route::get('/comment/{id}/vote-up', 'CommentController@voteUp')->name('comment.voteUp');
+Route::get('/comment/{id}/vote-down', 'CommentController@voteDown')->name('comment.voteDown');

@@ -6,7 +6,7 @@
         <div class="col-md-8">
             @include('util.message')
             <div class="card">
-                <div class="card-header">Posts list </div>
+                <div class="card-header">{{__('messages.posts')}}</div>
                 <div class="card-body">
                     <div class="row p-5">
                         <div class="col-md-12">
