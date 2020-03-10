@@ -41,7 +41,7 @@
                                         $up_class = $down_class = "comment-score-btn";
                                         @endphp
                                         @if($comment->isUp(Auth::user()->getId()))
-                                        @php 
+                                        @php
                                         $down_class = "disable"
                                         @endphp
                                         @elseif($comment->isDown(Auth::user()->getId()))
@@ -51,7 +51,7 @@
                                         <br><span class="comment-score-value">{{ $comment->getScore() }}</span>
                                         <br><a class="btn comment-score-btn btn-danger {{$down_class}}" href="/comment/{{$comment->getId()}}/vote-down">-</a>
                                     </div>
-                                    <div class="col-xs-5 col-md-9">
+                                    <div class="col-xs-5 col-md-8">
                                         <div class="mic-info">
                                             {{__('messages.by')}}: <b> {{ $comment->user == Auth::user() ? __('messages.me'):$comment->user->getName() }} </b> {{__('messages.on')}} {{ $comment->updated_at->format("d/m/Y") }}
                                         </div>
@@ -59,9 +59,9 @@
                                             {{ $comment->getDescription() }}
                                         </div>
                                     </div>
-                                    <div class="col-xs-2 col-md-2 btns-box">
-                                        @if($comment->user == Auth::user() )
-                                        <div class="action form-inline">
+                                    <div class="col-xs-3 col-md-3 btns-box">
+                                        <div class="action form-inline comments-btns-container">
+                                            @if($comment->user == Auth::user() )
                                             <form class="form-group comments-btns" action="{{ route('comment.delete', [ 'id' => $comment->getId() ]) }}" method="POST">
                                                 @csrf
                                                 {{ method_field('DELETE') }}
@@ -75,8 +75,17 @@
                                                     <img src="https://img.icons8.com/android/24/000000/edit.png">
                                                 </button>
                                             </form>
+                                            @endif
+                                            @if($data["allowed_ops"])
+                                            <a class="btn form-group comments-btns fixed" href="/post/{{$data['post']->getId()}}/fix_comment/{{$comment->getId()}}">
+                                                @if($comment->getFixed())
+                                                <img src="https://img.icons8.com/ios-filled/26/000000/star.png">
+                                                @else
+                                                <img src="https://img.icons8.com/metro/26/000000/star.png">
+                                                @endif
+                                            </a>
+                                            @endif
                                         </div>
-                                        @endif
                                     </div>
                                 </div>
                             </li>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use App\User;
+use App\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,8 +29,10 @@ class PostController extends Controller
     {
         $data = []; //to be sent to the view
         $post = Post::with("comments")->find($id);
+        $commentsList =$post->comments()->orderBy('score')->orderByDesc('fixed');
         $data["title"] = $post->getTitle();
         $data["post"] = $post;
+        $data["comments"] = $commentsList;
         if ($post->user == Auth::user()) {
             $data["allowed_ops"] = true;
         } else {
@@ -130,13 +133,26 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         Post::validate($request);
-        $post = Post::find($id);
-        if ($post->user != Auth::user()){
+        $post = Post::findOrFail($id);
+        if ($post->user != Auth::user()) {
             return (401);
         }
         $post->title = $request->get('title');
         $post->content = $request->get('content');
         $post->save();
-        return redirect()->route('post.show', [ 'id' => $id ])->with('success', 'Post edited successfully!');
+        return redirect()->route('post.show', ['id' => $id])->with('success', 'Post edited successfully!');
+    }
+
+    public function fix($post_id, $comment_id)
+    {
+        $post = Post::with("comments")->findOrFail($post_id);
+        if ($post->user != Auth::user()) {
+            return (401);
+        }
+        $post->comments()->update(['fixed' => false]);
+        $comment = Comment::where('post_id', $post_id)->where('id', $comment_id)->first();
+        $comment->setFixed(true);
+        $comment->save();
+        return redirect()->route('post.show', ['id' => $post_id]);
     }
 }

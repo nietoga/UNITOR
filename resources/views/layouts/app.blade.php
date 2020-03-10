@@ -93,7 +93,7 @@
 <footer>
     <div class="app-footer">
         @if(session('module') == 'forum')
-        <a href="https://icons8.com/">icons by Icons8</a>
+        <a href="https://icons8.com/" target="_blank">icons by Icons8</a>
         @endif
     </div>
 </footer>

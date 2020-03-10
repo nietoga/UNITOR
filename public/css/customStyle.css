@@ -99,3 +99,11 @@ li.list-group-item:hover {
     color: black;
     background-color: transparent;
 }
+
+.fixed{
+    float: right;
+}
+
+.comments-btns-container{
+    float: right;
+}

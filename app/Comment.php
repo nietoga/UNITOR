@@ -10,12 +10,13 @@ use App\CommentVote;
 
 class Comment extends Model
 {
-    //attributes id, description, post_id, created_at, updated_at
+    //attributes id, description, post_id, score, fixed, created_at, updated_at
     protected $fillable = [
         'description',
         'post_id',
         'user_id',
-        'score'
+        'score',
+        'fixed',
     ];
 
     public function getId()
@@ -66,6 +67,16 @@ class Comment extends Model
     public function setScore($score)
     {
         $this->attributes['score'] = $score;
+    }
+
+    public function getFixed()
+    {
+        return $this->attributes['fixed'];
+    }
+
+    public function setFixed($fixed)
+    {
+        $this->attributes['fixed'] = $fixed;
     }
 
     public function isUp($user_id){
