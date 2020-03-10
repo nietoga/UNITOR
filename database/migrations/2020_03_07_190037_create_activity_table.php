@@ -19,7 +19,7 @@ class CreateActivityTable extends Migration
             $table->foreign('course_id')->references('id')->on('courses');
             $table->string('name');
             $table->float('grade')->nullable();
-            $table->float('porcentage')->nullable();
+            $table->float('percentage')->nullable();
             $table->timestamps();
         });
     }
