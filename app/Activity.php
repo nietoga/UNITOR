@@ -67,22 +67,22 @@ class Activity extends Model
     }
 
     /**
-     * Returns the porcentage of the Activity
+     * Returns the percentage of the Activity
      *
      * @return float
      */
-    public function getPorcentage() {
-        return $this->porcentage;
+    public function getPercentage() {
+        return $this->percentage;
     }
 
     /**
-     * Sets the porcentage of the Activity
+     * Sets the percentage of the Activity
      *
-     * @param float $porcentage
+     * @param float $percentage
      * @return void
      */
-    public function setPorcentage($porcentage) {
-        $this->porcentage = $porcentage;
+    public function setPercentage($percentage) {
+        $this->percentage = $percentage;
     }
 
     /**
