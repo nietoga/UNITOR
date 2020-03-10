@@ -16,7 +16,7 @@ class Activity extends Model
         'course_id',
         'name',
         'grade',
-        'percentage'
+        'percentage',
     ];
 
     /**
