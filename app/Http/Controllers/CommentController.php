@@ -135,4 +135,16 @@ class CommentController extends Controller
     {
         return $this->vote($id, -1, "subtracted");
     }
+
+    /**
+     * Report a comment
+     * 
+     * @param int Comment id
+     */
+    public function report(Request $request, $id){
+        $comment = Comment::find($id);
+        $comment->setReported($request["reported"]);
+        $comment->save();
+        return back();
+    }
 }

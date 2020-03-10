@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -13,6 +14,8 @@ class AdminController extends Controller
 
     public function index()
     {
-        return view('admin.index');
+        session()->put('module', 'use-icons');
+        $data["comments"] = Comment::where('reported', true)->get();
+        return view('admin.index')->with("data", $data);
     }
 }

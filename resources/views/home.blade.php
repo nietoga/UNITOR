@@ -9,14 +9,15 @@
 
                 <div class="card-body">
                     @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
                     @endif
                     <p>{{ __('messages.welcome') }}</p>
-                    <form action="{{ route('period.index') }}" method="get">
-                        <button type="submit" class="btn btn-primary">{{__('messages.periods')}}</button>
-                    </form>
+                    <a class="btn btn-primary" href="{{ route('period.index') }}">{{__('messages.periods')}}</a>
+                    @if(Auth::user()->isAdmin())
+                    <a class="btn btn-primary" href="{{ route('admin.index') }}">{{__('messages.panel')}}</a>
+                    @endif
                 </div>
             </div>
         </div>
