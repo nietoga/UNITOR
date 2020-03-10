@@ -37,10 +37,11 @@ class ActivityController extends Controller
     public function save(Request $request)
     {
         $request->validate([
-            "name" => "required"
+            'name' => 'required',
+            'percentage' => 'required',
         ]);
 
-        Activity::create($request->only(["course_id", "name"]));
+        Activity::create($request->only(['course_id', 'name', 'percentage', 'grade']));
 
         return redirect(route('course.show', $request['course_id']));
     }
@@ -53,8 +54,8 @@ class ActivityController extends Controller
      */
     public function show($id)
     {
-        $activiy = Activity::findOrFail($id);
-        return view('activty.show')->with('activity', $activity);
+        $activity = Activity::findOrFail($id);
+        return view('activity.show')->with('activity', $activity);
     }
 
     /**
@@ -65,7 +66,7 @@ class ActivityController extends Controller
      */
     public function delete($id)
     {
-        Acrtivity::destroy($id);
-        return redirect(route('course.index'));
+        Activity::destroy($id);
+        return redirect(route('period.index'));
     }
 }
