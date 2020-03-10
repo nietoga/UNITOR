@@ -1,4 +1,4 @@
-.app-footer{
+.app-footer {
     padding: 10px;
 }
 
@@ -72,7 +72,30 @@ li.list-group-item:hover {
     border: 1px solid red;
 }
 
-.language-label{
+.language-label {
     font-size: 13px;
     color: #949494;
+}
+
+.comment-score {
+    text-align: center;
+    padding: 0px;
+    margin: 0px;
+}
+
+.comment-score-value {
+    margin: 10px 0px 10px 0px;
+}
+
+.comment-score-btn{
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.disable {
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
+    color: black;
+    background-color: transparent;
 }

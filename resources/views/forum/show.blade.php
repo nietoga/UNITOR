@@ -36,7 +36,22 @@
                         <div class="">
                             <li class="list-group-item red">
                                 <div class="row">
-                                    <div class="col-xs-9 col-md-10">
+                                    <div class="col-xs-1 col-md-1 comment-score">
+                                        @php
+                                        $up_class = $down_class = "comment-score-btn";
+                                        @endphp
+                                        @if($comment->isUp(Auth::user()->getId()))
+                                        @php 
+                                        $down_class = "disable"
+                                        @endphp
+                                        @elseif($comment->isDown(Auth::user()->getId()))
+                                        @php $up_class = "disable" @endphp
+                                        @endif
+                                        <a class="btn comment-score-btn btn-success {{$up_class}}" href="/comment/{{$comment->getId()}}/vote-up">+</a>
+                                        <br><span class="comment-score-value">{{ $comment->getScore() }}</span>
+                                        <br><a class="btn comment-score-btn btn-danger {{$down_class}}" href="/comment/{{$comment->getId()}}/vote-down">-</a>
+                                    </div>
+                                    <div class="col-xs-5 col-md-9">
                                         <div class="mic-info">
                                             {{__('messages.by')}}: <b> {{ $comment->user == Auth::user() ? __('messages.me'):$comment->user->getName() }} </b> {{__('messages.on')}} {{ $comment->updated_at->format("d/m/Y") }}
                                         </div>

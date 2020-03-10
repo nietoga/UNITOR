@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Comment;
 use App\User;
+use App\CommentVote;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,6 +31,7 @@ class CommentController extends Controller
         $comment = Comment::findOrFail($id);
 
         if ($comment->user == Auth::user()) {
+            $comment->commentVotes()->delete();
             $comment->delete();
             return back()->with('success', 'Comment deleted successfully!');
         } else {
@@ -87,5 +89,50 @@ class CommentController extends Controller
         $comment->setDescription($request->get('description'));
         $comment->save();
         return redirect()->route('post.show', ['id' => $comment->post->getId()])->with('success', 'Comment edited successfully!');
+    }
+
+    private function vote($id, $value, $type)
+    {
+        $user_id = Auth::user()->getId();
+        
+        $comment = Comment::find($id);
+        $comment_id = $comment->getId();
+        $comment_vote = CommentVote::where('user_id', $user_id)->where('comment_id', $comment_id)->first();
+        $comment_score = $comment->getScore();
+        if($comment_vote != null){
+            $comment_vote->delete();
+            $comment->setScore($comment_score-$value);
+            $comment->save();
+            return back();
+        } else {
+            CommentVote::create([
+                'user_id' => $user_id,
+                'comment_id' => $comment_id,
+                'vote_type' => $type
+            ]);
+            $comment->setScore($comment_score+$value);
+            $comment->save();
+            return back();
+        }
+    }
+
+    /**
+     * Add one point to the score of a given comment
+     * 
+     * @param int Comment id
+     */
+    public function voteUp($id)
+    {
+        return $this->vote($id, 1, "added");
+    }
+
+    /**
+     * Subtract one point to the score of a given comment
+     * 
+     * @param int Commnet id
+     */
+    public function voteDown($id)
+    {
+        return $this->vote($id, -1, "subtracted");
     }
 }

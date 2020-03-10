@@ -46,3 +46,5 @@ Route::post('/comment/save', 'CommentController@save')->name('comment.save');
 Route::delete('/comment/delete/{id}', 'CommentController@delete')->name('comment.delete');
 Route::post('/commment/edit/{id}', 'CommentController@edit')->name('comment.edit');
 Route::patch('/comment/update/{id}', 'CommentController@update')->name('comment.update');
+Route::get('/comment/{id}/vote-up', 'CommentController@voteUp')->name('comment.voteUp');
+Route::get('/comment/{id}/vote-down', 'CommentController@voteDown')->name('comment.voteDown');
