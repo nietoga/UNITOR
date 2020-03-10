@@ -68,4 +68,12 @@ class CommentVote extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function getUserId() {
+        return $this->attributes['user_id'];
+    }
+
+    public function setUserId($id) {
+        $this->attributes['user_id'] = $id;
+    } 
 }
