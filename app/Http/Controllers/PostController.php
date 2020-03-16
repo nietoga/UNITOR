@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Database\Schema\Blueprint;
 use App\Post;
 use App\User;
 use App\Comment;
@@ -32,12 +32,15 @@ class PostController extends Controller
         $commentsList =$post->comments()->where('reported', false)->orderByDesc('fixed')->orderByDesc('score')->get();
         $data["title"] = $post->getTitle();
         $data["post"] = $post;
+        $user = $post->user()->get();
         $data["comments"] = $commentsList;
         if ($post->user == Auth::user()) {
             $data["allowed_ops"] = true;
         } else {
             $data["allowed_ops"] = false;
         }
+
+        
         return view('forum.show')->with("data", $data);
     }
 

@@ -35,8 +35,8 @@ return [
     'you-need' => 'Necesitas la siguiente nota en el final: ',
     'enter-percentage' => 'Ingrese el porcentaje',
     'enter-grade' => 'Ingrese la nota',
+    'course-name' => 'Nombre del curso',
+    'new-course' => 'Nuevo curso',
     'percentage' => 'Porcentaje',
     'grade' => 'Nota',
-    'new-course' => 'Nuevo Curso',
-    'name' => 'Nombre',
 ];
