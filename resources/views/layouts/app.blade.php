@@ -29,12 +29,7 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     Unitor
                 </a>
-                @if(session('module') == 'forum')
-                <a class="navbar-brand" href="{{ route('post.index') }}">{{__('messages.posts')}}</a>
-                <a class="navbar-brand" href="{{ route('post.new' ) }}">{{__('messages.new-post')}}</a>
-                @else
                 <a class="navbar-brand" href="{{ route('forum') }}">{{__('messages.forum-title')}}</a>
-                @endif
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -84,7 +79,14 @@
                 <a href="/lang/en"><i class="fa fa-language"></i>EN</a> | <a href="/lang/es"><i class="fa fa-language"></i>ES</a>
             </div>
         </nav>
-
+        <div class="forum-options col-xs-2 col-md-2">
+            <nav class="list-group">
+                @if(session('module') == 'forum')
+                <a class="list-group-item list-group-item-action" href="{{ route('post.index') }}">{{__('messages.posts')}}</a>
+                <a class="list-group-item list-group-item-action" href="{{ route('post.new' ) }}">{{__('messages.new-post')}}</a>
+                @endif
+            </nav>
+        </div>
         <main class="py-4">
             @yield('content')
         </main>

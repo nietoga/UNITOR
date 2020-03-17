@@ -7,14 +7,9 @@
             <div class="card">
                 <div class="card-header">{{ $activity->getName() }}</div>
                 <div class="card-body">
-                    <ul>
-                        <li>
-                            {{ $activity->getPercentage() }}%
-                        </li>
-                        <li>
-                            {{ $activity->getGrade() }}
-                        </li>
-                    </ul>
+                    <p> {{ __('messages.percentage') }}: {{ $activity->getPercentage() }}%</p>
+                    <p>{{ __('messages.grade') }}: {{ $activity->getGrade() }}</p>
+
                     <form action="{{ route('activity.delete', $activity->getId()) }}" method="post">
                         @csrf
                         @method('DELETE')
