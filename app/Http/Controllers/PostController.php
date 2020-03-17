@@ -40,7 +40,6 @@ class PostController extends Controller
             $data["allowed_ops"] = false;
         }
 
-        
         return view('forum.show')->with("data", $data);
     }
 
