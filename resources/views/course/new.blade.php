@@ -10,7 +10,7 @@
                     <form action="{{ route('course.save') }}" method="post">
                         @csrf
                         <div class="form-group">
-                            <input type="hidden" name="period_id" value="{{ $period_id }}">
+                            <input type="hidden" name="period_id" value="{{ $data['period_id'] }}">
                             <label for="name">{{ __('messages.name') }}</label>
                             <input type="text" class="form-control" id="name" name="name" placeholder="{{ __('messages.enter-name') }}">
                         </div>

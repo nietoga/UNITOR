@@ -10,7 +10,7 @@
                     <form action="{{ route('activity.save') }}" method="post">
                         @csrf
                         <div class="form-group">
-                            <input type="hidden" name="course_id" value="{{ $course_id }}">
+                            <input type="hidden" name="course_id" value="{{ $data['course_id'] }}">
                             <label for="name">{{ __('messages.name') }}</label>
                             <input type="text" class="form-control" id="name" name="name" placeholder="{{ __('messages.enter-name') }}">
                             <label for="percentage">{{ __('messages.percentage') }}</label>
