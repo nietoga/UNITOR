@@ -66,7 +66,7 @@ class Course extends Model
     /**
      * Calculates the required grade in the resting percent for reaching 3.0
      *
-     * @return void
+     * @return float
      */
     public function howMuchDoINeed() {
         $activities = $this->activities()->get();
@@ -79,6 +79,20 @@ class Course extends Model
         }
 
         return (300 - $acum) / $percentLeft;
+    }
+
+    /**
+     * Calculates the remaining percentage until this course is finished
+     *
+     * @return float
+     */
+    public function remainingPercentage() {
+        $activities = $this->activities()->get();
+        $acum = 0;
+        foreach($activities as $activity) {
+            $acum = $acum + $activity->getPercentage();
+        }
+        return 100 - $acum;
     }
 
     /**

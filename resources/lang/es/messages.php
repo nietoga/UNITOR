@@ -32,7 +32,7 @@ return [
     'panel' => 'Panel',
     'report' => 'Reportar',
     'new-activity' => 'Nueva Actividad',
-    'you-need' => 'Necesitas la siguiente nota en el final: ',
+    'you-need' => 'Necesitas obtener :needed en el :remaining % restante',
     'enter-percentage' => 'Ingrese el porcentaje',
     'enter-grade' => 'Ingrese la nota',
     'course-name' => 'Nombre del curso',

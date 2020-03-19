@@ -25,7 +25,9 @@ class CourseController extends Controller
      */
     public function new(Request $request)
     {
-        return view('course.new')->with('period_id', $request['period_id']);
+        $data = [];
+        $data['period_id'] = $request['period_id'];
+        return view('course.new')->with('data', $data);
     }
 
     /**
@@ -42,7 +44,7 @@ class CourseController extends Controller
             'name',
         ]));
 
-        return redirect(route('period.show', $request['period_id']));
+        return redirect()->route('period.show', $request['period_id']);
     }
 
     /**
@@ -55,10 +57,12 @@ class CourseController extends Controller
     {
         $course = Course::with('activities')->findOrFail($id);
         $needed = $course->howMuchDoINeed();
+        $remaining = $course->remainingPercentage();
 
         $data = [
             'course' => $course,
             'needed' => $needed,
+            'remaining' => $remaining,
         ];
 
         return view('course.show')->with('data', $data);
@@ -73,6 +77,6 @@ class CourseController extends Controller
     public function delete($id)
     {
         Course::destroy($id);
-        return redirect(route('period.index'));
+        return back();
     }
 }

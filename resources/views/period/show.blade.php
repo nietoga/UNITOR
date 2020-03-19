@@ -13,6 +13,12 @@
                                 <a href="{{ route('course.show', $course->getId()) }}">
                                     {{ $course->getName() }}
                                 </a>
+
+                                <form action="{{ route('course.delete', $course->getId()) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">{{ __('messages.delete') }}</button>
+                                </form>
                             </li>
                         @endforeach
                     </ul>

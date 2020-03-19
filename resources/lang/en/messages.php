@@ -32,7 +32,7 @@ return [
     'panel' => 'Panel',
     'report' => 'Report',
     'new-activity' => 'New Activity',
-    'you-need' => 'You need the following grade in your final: ',
+    'you-need' => 'You need to get :needed in the remaning :remaining %',
     'enter-percentage' => 'Enter percentage',
     'enter-grade' => 'Enter grade',
     'name' => 'Name',
