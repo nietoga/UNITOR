@@ -25,8 +25,9 @@ class PeriodController extends Controller
      */
     public function index()
     {
-        $periods = Auth::user()->periods;
-        return view('period.index')->with('periods', $periods);
+        $data = [];
+        $data['periods'] = Auth::user()->periods;
+        return view('period.index')->with('data', $data);
     }
 
     /**
@@ -53,7 +54,7 @@ class PeriodController extends Controller
             'name' => $request['name'],
         ]);
 
-        return redirect('/period/index');
+        return redirect()->route('period.index');
     }
 
     /**
@@ -64,10 +65,11 @@ class PeriodController extends Controller
      */
     public function show($id)
     {
-        $period = Period::with('courses')->findOrFail($id);
+        $data = [];
+        $data['period'] = Period::with('courses')->findOrFail($id);
 
-        if ($period->user == Auth::user()) {
-            return view('period.show')->with('period', $period);
+        if ($data['period']->user == Auth::user()) {
+            return view('period.show')->with('data', $data);
         } else {
             return abort(401);
         }
@@ -85,7 +87,7 @@ class PeriodController extends Controller
 
         if ($period->user == Auth::user()) {
             Period::destroy($id);
-            return redirect('/period/index');
+            return back();
         } else {
             return abort(401);
         }

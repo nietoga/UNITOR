@@ -9,11 +9,17 @@
 
                 <div class="card-body">
                     <ul>
-                        @foreach ($periods as $period)
+                        @foreach ($data['periods'] as $period)
                             <li>
                                 <a href="{{ route('period.show', $period->getId()) }}">
                                     {{ $period->getName() }}
                                 </a>
+
+                                <form action="{{ route('period.delete', $period->getId()) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">{{ __('messages.delete') }}</button>
+                                </form>
                             </li>
                         @endforeach
                     </ul>

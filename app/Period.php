@@ -74,4 +74,17 @@ class Period extends Model
             'name' => 'required',
         ]);
     }
+
+    /**
+     * Event handler for periods
+     *
+     * @return void
+     */
+    public static function boot() {
+        parent::boot();
+
+        static::deleting(function ($period) {
+            $period->courses()->delete();
+        });
+    }
 }

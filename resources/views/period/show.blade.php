@@ -5,10 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ $period->getName() }}</div>
+                <div class="card-header">{{ $data['period']->getName() }}</div>
                 <div class="card-body">
                     <ul>
-                        @foreach ($period->courses as $course)
+                        @foreach ($data['period']->courses as $course)
                             <li>
                                 <a href="{{ route('course.show', $course->getId()) }}">
                                     {{ $course->getName() }}
@@ -18,14 +18,8 @@
                     </ul>
 
                     <form action="{{ route('course.new') }}" method="get">
-                        <input type="hidden" name="period_id" value="{{ $period->getId() }}">
+                        <input type="hidden" name="period_id" value="{{ $data['period']->getId() }}">
                         <button type="submit" class="btn btn-primary">{{ __('messages.new-course') }}</button>
-                    </form>
-
-                    <form action="{{ route('period.delete', $period->getId()) }}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">{{ __('messages.delete') }}</button>
                     </form>
                 </div>
             </div>

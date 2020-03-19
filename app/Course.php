@@ -93,4 +93,17 @@ class Course extends Model
             'name' => 'required',
         ]);
     }
+
+    /**
+     * Event handler for courses
+     *
+     * @return void
+     */
+    public static function boot() {
+        parent::boot();
+
+        static::deleting(function ($course) {
+            $course->activities()->delete();
+        });
+    }
 }

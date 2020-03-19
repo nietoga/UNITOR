@@ -13,29 +13,34 @@
 
 Auth::routes();
 
+// Home
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/forum', 'HomeController@forum')->name('forum');
 
-//Localization
+// Localization
 Route::get('/lang/{locale}', 'HomeController@lang');
 
-
+// Period routes
 Route::get('/period/index', 'PeriodController@index')->name('period.index');
 Route::get('/period/new', 'PeriodController@new')->name('period.new');
 Route::get('/period/show/{id}', 'PeriodController@show')->name('period.show');
 Route::post('/period/save', 'PeriodController@save')->name('period.save');
+Route::patch('/period/update/{id}', 'PeriodController@update')->name('period.update');
 Route::delete('/period/delete/{id}', 'PeriodController@delete')->name('period.delete');
 
+// Course routes
 Route::get('/course/new', 'CourseController@new')->name('course.new');
 Route::get('/course/show/{id}', 'CourseController@show')->name('course.show');
 Route::post('/course/save', 'CourseController@save')->name('course.save');
+Route::patch('/course/update/{id}', 'CourseController@update')->name('course.update');
 Route::delete('/course/delete/{id}', 'CourseController@delete')->name('course.delete');
 
 //Activity routes
 Route::get('/activity/new', 'ActivityController@new')->name('activity.new');
 Route::get('/activity/show/{id}', 'ActivityController@show')->name('activity.show');
 Route::post('/activity/save', 'ActivityController@save')->name('activity.save');
+Route::patch('/activity/update/{id}', 'ActivityController@update')->name('activity.update');
 Route::delete('/activity/delete/{id}', 'ActivityController@delete')->name('activity.delete');
 
 // Forum routes
@@ -57,5 +62,6 @@ Route::get('/comment/{id}/vote-up', 'CommentController@voteUp')->name('comment.v
 Route::get('/comment/{id}/vote-down', 'CommentController@voteDown')->name('comment.voteDown');
 Route::post('/commment/report/{id}', 'CommentController@report')->name('comment.report');
 
+// Admin routes
 Route::get('/admin', 'AdminController@index');
 Route::get('/admin/index', 'AdminController@index')->name('admin.index');
