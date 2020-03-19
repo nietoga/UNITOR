@@ -6,6 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ $data['activity']->getName() }}</div>
+                {{ Breadcrumbs::render('activity', $data['activity']) }}
                 <div class="card-body">
                     <p> {{ __('messages.percentage') }}: {{ $data['activity']->getPercentage() }}%</p>
                     <p>{{ __('messages.grade') }}: {{ $data['activity']->getGrade() }}</p>

@@ -6,6 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ $data['period']->getName() }}</div>
+                {{ Breadcrumbs::render('period', $data['period']) }}
                 <div class="card-body">
                     <ul>
                         @foreach ($data['period']->courses as $course)
