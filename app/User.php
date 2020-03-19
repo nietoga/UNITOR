@@ -47,7 +47,7 @@ class User extends Authenticatable
      * @return int
      */
     public function getId() {
-        return $this->id;
+        return $this->attributes['id'];
     }
 
     /**
@@ -56,7 +56,7 @@ class User extends Authenticatable
      * @return string
      */
     public function getName() {
-        return $this->name;
+        return $this->attributes['name'];
     }
 
     /**
@@ -95,6 +95,11 @@ class User extends Authenticatable
         return $this->hasMany(CommentVote::class);
     }
 
+    /**
+     * Indicates if this user is flagged as an admin
+     *
+     * @return boolean
+     */
     public function isAdmin() {
         return $this->type === User::ADMIN_TYPE;
     }
