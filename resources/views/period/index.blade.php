@@ -15,6 +15,10 @@
                                     {{ $period->getName() }}
                                 </a>
 
+                                <form action="{{ route('period.edit', $period->getId()) }}" method="get">
+                                    <button type="submit" class="btn btn-primary">{{ __('messages.edit') }}</button>
+                                </form>
+
                                 <form action="{{ route('period.delete', $period->getId()) }}" method="post">
                                     @csrf
                                     @method('DELETE')

@@ -25,6 +25,7 @@ Route::get('/lang/{locale}', 'HomeController@lang');
 Route::get('/period/index', 'PeriodController@index')->name('period.index');
 Route::get('/period/new', 'PeriodController@new')->name('period.new');
 Route::get('/period/show/{id}', 'PeriodController@show')->name('period.show');
+Route::get('/period/edit/{id}', 'PeriodController@edit')->name('period.edit');
 Route::post('/period/save', 'PeriodController@save')->name('period.save');
 Route::patch('/period/update/{id}', 'PeriodController@update')->name('period.update');
 Route::delete('/period/delete/{id}', 'PeriodController@delete')->name('period.delete');
@@ -32,6 +33,7 @@ Route::delete('/period/delete/{id}', 'PeriodController@delete')->name('period.de
 // Course routes
 Route::get('/course/new', 'CourseController@new')->name('course.new');
 Route::get('/course/show/{id}', 'CourseController@show')->name('course.show');
+Route::get('/course/edit/{id}', 'CourseController@edit')->name('course.edit');
 Route::post('/course/save', 'CourseController@save')->name('course.save');
 Route::patch('/course/update/{id}', 'CourseController@update')->name('course.update');
 Route::delete('/course/delete/{id}', 'CourseController@delete')->name('course.delete');
@@ -39,6 +41,7 @@ Route::delete('/course/delete/{id}', 'CourseController@delete')->name('course.de
 //Activity routes
 Route::get('/activity/new', 'ActivityController@new')->name('activity.new');
 Route::get('/activity/show/{id}', 'ActivityController@show')->name('activity.show');
+Route::get('/activity/edit/{id}', 'ActivityController@edit')->name('activity.edit');
 Route::post('/activity/save', 'ActivityController@save')->name('activity.save');
 Route::patch('/activity/update/{id}', 'ActivityController@update')->name('activity.update');
 Route::delete('/activity/delete/{id}', 'ActivityController@delete')->name('activity.delete');

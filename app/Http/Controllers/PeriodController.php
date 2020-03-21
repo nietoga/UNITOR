@@ -76,6 +76,44 @@ class PeriodController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $data = [];
+        $data['period'] = Period::findOrFail($id);
+
+        if ($data['period']->user == Auth::user()) {
+            return view('period.edit')->with('data', $data);
+        } else {
+            return abort(401);
+        }
+    }
+
+    /**
+     * Update resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        Period::validate($request);
+        $period = Period::findOrFail($id);
+
+        if ($period->user == Auth::user()) {
+            $period->setName($request['name']);
+            $period->save();
+            return redirect()->route('period.show', $id);
+        } else {
+            return abort(401);
+        }
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
