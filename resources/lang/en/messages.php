@@ -42,4 +42,5 @@ return [
     'update-period' => 'Update Period',
     'update-course' => 'Update Course',
     'update-activity' => 'Update Activity',
+    'empty-course' => 'This course is empty... add some activities :D',
 ];

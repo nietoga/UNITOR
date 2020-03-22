@@ -42,4 +42,5 @@ return [
     'update-period' => 'Actualizar Periodo',
     'update-course' => 'Actualizar Curso',
     'update-activity' => 'Actualizar Actividad',
+    'empty-course' => 'Este curso está vacío... agrega algunas actividades :D',
 ];

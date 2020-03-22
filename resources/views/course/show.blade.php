@@ -28,7 +28,11 @@
                         @endforeach
                     </ul>
 
-                    <h5>{{ __('messages.you-need', ['needed' => $data['needed'], 'remaining' => $data['remaining']]) }}</h5>
+                    @if (count($data['course']->activities) > 0)
+                        <h5>{{ __('messages.you-need', ['needed' => $data['needed'], 'remaining' => $data['remaining']]) }}</h5>
+                    @else
+                        <h5>{{ __('messages.empty-course') }}</h5>
+                    @endif
 
                     <form action="{{ route('activity.new') }}" method="get">
                         <input type="hidden" name="course_id" value="{{ $data['course']->getId() }}">
