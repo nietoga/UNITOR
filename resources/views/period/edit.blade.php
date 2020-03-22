@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{__('messages.periods')}}</div>
+                <div class="card-header">{{ __('messages.periods') }}</div>
                 <div class="card-body">
                     <form action="{{ route('period.update', $data['period']->getId()) }}" method="post">
                         @csrf

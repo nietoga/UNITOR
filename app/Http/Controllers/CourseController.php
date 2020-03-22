@@ -69,6 +69,39 @@ class CourseController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $data = [];
+        $data['course'] = Course::findOrFail($id);
+        return view('course.edit')->with('data', $data);
+    }
+
+    /**
+     * Update resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        // Notice here is a possibly big - big mistake
+        // Request should come with period_id to validate
+        // That's possibly not what we desire
+        Course::validate($request);
+        Course::where(['id' => $id])->update($request->only([
+            'period_id',
+            'name',
+        ]));
+
+        return redirect()->route('course.show', $id);
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
