@@ -23,7 +23,7 @@ class Period extends Model
      * @return int
      */
     public function getId() {
-        return $this->id;
+        return $this->attributes['id'];
     }
 
     /**
@@ -32,7 +32,7 @@ class Period extends Model
      * @return string
      */
     public function getName() {
-        return $this->name;
+        return $this->attributes['name'];
     }
 
     /**
@@ -42,7 +42,7 @@ class Period extends Model
      * @return void
      */
     public function setName($name) {
-        $this->name = $name;
+        $this->attributes['name'] = $name;
     }
 
     /**
@@ -63,9 +63,28 @@ class Period extends Model
         return $this->hasMany(Course::class);
     }
 
+    /**
+     * Validates name
+     *
+     * @param Request $request
+     * @return void
+     */
     public static function validate(Request $request) {
         $request->validate([
             'name' => 'required',
         ]);
+    }
+
+    /**
+     * Event handler for periods
+     *
+     * @return void
+     */
+    public static function boot() {
+        parent::boot();
+
+        static::deleting(function ($period) {
+            $period->courses()->delete();
+        });
     }
 }

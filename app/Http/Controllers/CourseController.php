@@ -25,7 +25,9 @@ class CourseController extends Controller
      */
     public function new(Request $request)
     {
-        return view('course.new')->with('period_id', $request['period_id']);
+        $data = [];
+        $data['period_id'] = $request['period_id'];
+        return view('course.new')->with('data', $data);
     }
 
     /**
@@ -42,7 +44,7 @@ class CourseController extends Controller
             'name',
         ]));
 
-        return redirect(route('period.show', $request['period_id']));
+        return redirect()->route('period.show', $request['period_id']);
     }
 
     /**
@@ -55,13 +57,48 @@ class CourseController extends Controller
     {
         $course = Course::with('activities')->findOrFail($id);
         $needed = $course->howMuchDoINeed();
+        $remaining = $course->remainingPercentage();
 
         $data = [
             'course' => $course,
             'needed' => $needed,
+            'remaining' => $remaining,
         ];
 
         return view('course.show')->with('data', $data);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $data = [];
+        $data['course'] = Course::findOrFail($id);
+        return view('course.edit')->with('data', $data);
+    }
+
+    /**
+     * Update resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        // Notice here is a possibly big - big mistake
+        // Request should come with period_id to validate
+        // That's possibly not what we desire
+        Course::validate($request);
+        Course::where(['id' => $id])->update($request->only([
+            'period_id',
+            'name',
+        ]));
+
+        return redirect()->route('course.show', $id);
     }
 
     /**
@@ -73,6 +110,6 @@ class CourseController extends Controller
     public function delete($id)
     {
         Course::destroy($id);
-        return redirect(route('period.index'));
+        return back();
     }
 }

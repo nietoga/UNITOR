@@ -6,6 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ $data['course']->getName() }}</div>
+                {{ Breadcrumbs::render('course', $data['course']) }}
                 <div class="card-body">
                     <ul>
                         @foreach ($data['course']->activities as $activity)
@@ -13,20 +14,29 @@
                                 <a href="{{ route('activity.show', $activity->getId()) }}">
                                     {{ $activity->getName() }}
                                 </a>
+
+                                <form action="{{ route('activity.edit', $activity->getId()) }}" method="get">
+                                    <button type="submit" class="btn btn-primary">{{ __('messages.edit') }}</button>
+                                </form>
+
+                                <form action="{{ route('activity.delete', $activity->getId()) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">{{ __('messages.delete') }}</button>
+                                </form>
                             </li>
                         @endforeach
                     </ul>
 
-                    <h5>{{ __('messages.you-need') }} {{ $data['needed'] }}</h5>
+                    @if (count($data['course']->activities) > 0)
+                        <h5>{{ __('messages.you-need', ['needed' => $data['needed'], 'remaining' => $data['remaining']]) }}</h5>
+                    @else
+                        <h5>{{ __('messages.empty-course') }}</h5>
+                    @endif
 
                     <form action="{{ route('activity.new') }}" method="get">
                         <input type="hidden" name="course_id" value="{{ $data['course']->getId() }}">
                         <button type="submit" class="btn btn-primary">{{ __('messages.new-activity') }}</button>
-                    </form>
-                    <form action="{{ route('course.delete', $data['course']->getId()) }}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">{{ __('messages.delete') }}</button>
                     </form>
                 </div>
             </div>

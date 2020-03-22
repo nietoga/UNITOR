@@ -26,7 +26,7 @@ class Activity extends Model
      * @return int
      */
     public function getId() {
-        return $this->id;
+        return $this->attributes['id'];
     }
 
     /**
@@ -35,7 +35,7 @@ class Activity extends Model
      * @return string
      */
     public function getName() {
-        return $this->name;
+        return $this->attributes['name'];
     }
 
     /**
@@ -45,7 +45,7 @@ class Activity extends Model
      * @return void
      */
     public function setName($name) {
-        $this->name = $name;
+        $this->attributes['name'] = $name;
     }
 
     /**
@@ -54,7 +54,7 @@ class Activity extends Model
      * @return float
      */
     public function getGrade() {
-        return $this->grade;
+        return $this->attributes['grade'];
     }
 
     /**
@@ -64,7 +64,7 @@ class Activity extends Model
      * @return void
      */
     public function setGrade($grade) {
-        $this->grade = $grade;
+        $this->attributes['grade'] = $grade;
     }
 
     /**
@@ -73,7 +73,7 @@ class Activity extends Model
      * @return float
      */
     public function getPercentage() {
-        return $this->percentage;
+        return $this->attributes['percentage'];
     }
 
     /**
@@ -83,7 +83,7 @@ class Activity extends Model
      * @return void
      */
     public function setPercentage($percentage) {
-        $this->percentage = $percentage;
+        $this->attributes['percentage'] = $percentage;
     }
 
     /**
@@ -95,6 +95,12 @@ class Activity extends Model
         return $this->belongsTo(Course::class);
     }
 
+    /**
+     * Validates course_id, name, percentage and grade
+     *
+     * @param Request $request
+     * @return void
+     */
     public static function validate(Request $request) {
         $request->validate([
             'course_id' => 'required',

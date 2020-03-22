@@ -25,7 +25,9 @@ class ActivityController extends Controller
      */
     public function new(Request $request)
     {
-        return view('activity.new')->with('course_id', $request['course_id']);
+        $data = [];
+        $data['course_id'] = $request['course_id'];
+        return view('activity.new')->with('data', $data);
     }
 
     /**
@@ -37,9 +39,14 @@ class ActivityController extends Controller
     public function save(Request $request)
     {
         Activity::validate($request);
-        Activity::create($request->only(['course_id', 'name', 'percentage', 'grade']));
+        Activity::create($request->only([
+            'course_id',
+            'name',
+            'percentage',
+            'grade',
+        ]));
 
-        return redirect(route('course.show', $request['course_id']));
+        return redirect()->route('course.show', $request['course_id']);
     }
 
     /**
@@ -50,8 +57,42 @@ class ActivityController extends Controller
      */
     public function show($id)
     {
-        $activity = Activity::findOrFail($id);
-        return view('activity.show')->with('activity', $activity);
+        $data = [];
+        $data['activity'] = Activity::findOrFail($id);
+        return view('activity.show')->with('data', $data);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $data = [];
+        $data['activity'] = Activity::findOrFail($id);
+        return view('activity.edit')->with('data', $data);
+    }
+
+    /**
+     * Update resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        // Notice here is a possibly big - big mistake
+        // Request should come with course_id to validate
+        // That's possibly not what we desire
+        Activity::validate($request);
+        Activity::where(['id' => $id])->update($request->only([
+            'course_id',
+            'name',
+        ]));
+
+        return redirect()->route('activity.show', $id);
     }
 
     /**
@@ -63,6 +104,6 @@ class ActivityController extends Controller
     public function delete($id)
     {
         Activity::destroy($id);
-        return redirect(route('period.index'));
+        return back();
     }
 }

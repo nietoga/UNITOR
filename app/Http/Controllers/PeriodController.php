@@ -25,8 +25,9 @@ class PeriodController extends Controller
      */
     public function index()
     {
-        $periods = Auth::user()->periods;
-        return view('period.index')->with('periods', $periods);
+        $data = [];
+        $data['periods'] = Auth::user()->periods;
+        return view('period.index')->with('data', $data);
     }
 
     /**
@@ -53,7 +54,7 @@ class PeriodController extends Controller
             'name' => $request['name'],
         ]);
 
-        return redirect('/period/index');
+        return redirect()->route('period.index');
     }
 
     /**
@@ -64,10 +65,49 @@ class PeriodController extends Controller
      */
     public function show($id)
     {
-        $period = Period::with('courses')->findOrFail($id);
+        $data = [];
+        $data['period'] = Period::with('courses')->findOrFail($id);
+
+        if ($data['period']->user == Auth::user()) {
+            return view('period.show')->with('data', $data);
+        } else {
+            return abort(401);
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $data = [];
+        $data['period'] = Period::findOrFail($id);
+
+        if ($data['period']->user == Auth::user()) {
+            return view('period.edit')->with('data', $data);
+        } else {
+            return abort(401);
+        }
+    }
+
+    /**
+     * Update resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        Period::validate($request);
+        $period = Period::findOrFail($id);
 
         if ($period->user == Auth::user()) {
-            return view('period.show')->with('period', $period);
+            $period->setName($request['name']);
+            $period->save();
+            return redirect()->route('period.show', $id);
         } else {
             return abort(401);
         }
@@ -85,7 +125,7 @@ class PeriodController extends Controller
 
         if ($period->user == Auth::user()) {
             Period::destroy($id);
-            return redirect('/period/index');
+            return back();
         } else {
             return abort(401);
         }
