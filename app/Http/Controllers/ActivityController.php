@@ -63,6 +63,39 @@ class ActivityController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $data = [];
+        $data['activity'] = Activity::findOrFail($id);
+        return view('activity.edit')->with('data', $data);
+    }
+
+    /**
+     * Update resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        // Notice here is a possibly big - big mistake
+        // Request should come with course_id to validate
+        // That's possibly not what we desire
+        Activity::validate($request);
+        Activity::where(['id' => $id])->update($request->only([
+            'course_id',
+            'name',
+        ]));
+
+        return redirect()->route('activity.show', $id);
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id

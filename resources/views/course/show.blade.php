@@ -15,6 +15,10 @@
                                     {{ $activity->getName() }}
                                 </a>
 
+                                <form action="{{ route('activity.edit', $activity->getId()) }}" method="get">
+                                    <button type="submit" class="btn btn-primary">{{ __('messages.edit') }}</button>
+                                </form>
+
                                 <form action="{{ route('activity.delete', $activity->getId()) }}" method="post">
                                     @csrf
                                     @method('DELETE')
