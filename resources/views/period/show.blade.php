@@ -15,6 +15,10 @@
                                     {{ $course->getName() }}
                                 </a>
 
+                                <form action="{{ route('course.edit', $course->getId()) }}" method="get">
+                                    <button type="submit" class="btn btn-primary">{{ __('messages.edit') }}</button>
+                                </form>
+
                                 <form action="{{ route('course.delete', $course->getId()) }}" method="post">
                                     @csrf
                                     @method('DELETE')
