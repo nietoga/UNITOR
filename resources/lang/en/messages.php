@@ -39,4 +39,7 @@ return [
     'new-course' => 'New Course',
     'percentage' => 'Percentage',
     'grade' => 'Grade',
+    'update-period' => 'Update Period',
+    'update-course' => 'Update Course',
+    'update-activity' => 'Update Activity',
 ];
