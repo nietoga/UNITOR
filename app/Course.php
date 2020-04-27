@@ -101,11 +101,18 @@ class Course extends Model
      * @param Request $request
      * @return void
      */
-    public static function validate(Request $request) {
-        $request->validate([
+    public static function validate(Request $request, $fields = ['period_id', 'name']) {
+        $conditions = [
             'period_id' => 'required',
             'name' => 'required',
-        ]);
+        ];
+
+        $to_validate = [];
+        foreach($fields as $field) {
+            $to_validate[$field] = $conditions[$field];
+        }
+
+        $request->validate($to_validate);
     }
 
     /**
