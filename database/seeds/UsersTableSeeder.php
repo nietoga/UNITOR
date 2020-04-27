@@ -17,9 +17,9 @@ class UsersTableSeeder extends Seeder
     {
         factory(User::class, 3)->create();
         DB::table('users')->insert([
-            'name' => 'Kevin Arley Parra Henao',
-            'email' => 'eevinley@gmail.com',
-            'password' =>Hash::make('sis2019*'),
+            'name' => 'root',
+            'email' => 'root@unitor.com',
+            'password' => Hash::make('root'),
             'type' => User::ADMIN_TYPE,
         ]);
     }
