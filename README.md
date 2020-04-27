@@ -26,7 +26,7 @@ This is how you run UNITOR on a Linux system using artisan and apache server (ht
     DB_HOST=127.0.0.1
     DB_PORT=3306
     DB_DATABASE=unitor
-    DB_USERNAME=agustin
+    DB_USERNAME=root
     DB_PASSWORD=
     ````
 
