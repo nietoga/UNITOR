@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -57,6 +58,45 @@ class User extends Authenticatable
      */
     public function getName() {
         return $this->attributes['name'];
+    }
+
+    /**
+     * Sets the name of the User
+     *
+     * @param string $name
+     * @return void
+     */
+    public function setName($name) {
+        $this->attributes['name'] = $name;
+    }
+
+    /**
+     * Returns User email
+     *
+     * @return string
+     */
+    public function getEmail() {
+        return $this->attributes['email'];
+    }
+
+    /**
+     * Sets the email of the User
+     *
+     * @param string $email
+     * @return void
+     */
+    public function setEmail($email) {
+        $this->attributes['email'] = $email;
+    }
+
+    /**
+     * Sets the password of the User
+     *
+     * @param string $password
+     * @return void
+     */
+    public function setPassword($password) {
+        $this->attributes['password'] = Hash::make($password);
     }
 
     /**

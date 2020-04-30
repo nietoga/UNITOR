@@ -43,4 +43,11 @@ return [
     'update-course' => 'Update Course',
     'update-activity' => 'Update Activity',
     'empty-course' => 'This course is empty... add some activities :D',
+    'profile' => 'My profile',
+    'logout'=> 'Logout',
+    'login'=>'Login',
+    'register'=>'Registrer',
+    'user_name' => 'Name',
+    'user_email' => 'Email',
+    'user_profile' => 'User profile',
 ];

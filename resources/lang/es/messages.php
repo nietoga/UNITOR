@@ -43,4 +43,12 @@ return [
     'update-course' => 'Actualizar Curso',
     'update-activity' => 'Actualizar Actividad',
     'empty-course' => 'Este curso está vacío... agrega algunas actividades :D',
+    'profile'=> 'Mi perfil',
+    'logout'=> 'Salir',
+    'login'=>'Entrar',
+    'register'=>'Registrarse',
+    'user_name' => 'Nombre',
+    'user_email' => 'Correo electrónico',
+    'user_profile' => 'Perfil de usuario',
+
 ];

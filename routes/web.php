@@ -21,6 +21,11 @@ Route::get('/forum', 'HomeController@forum')->name('forum');
 // Localization
 Route::get('/lang/{locale}', 'HomeController@lang');
 
+// User routes
+Route::get('/user/show/{id}', 'UserController@show')->name('user.show');
+Route::get('/user/edit/{id}', 'UserController@edit')->name('user.edit');
+Route::post('/user/update/{id}', 'UserController@update')->name('user.update');
+
 // Period routes
 Route::get('/period/index', 'PeriodController@index')->name('period.index');
 Route::get('/period/new', 'PeriodController@new')->name('period.new');
