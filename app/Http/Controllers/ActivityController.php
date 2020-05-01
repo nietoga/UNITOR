@@ -90,6 +90,8 @@ class ActivityController extends Controller
         Activity::where(['id' => $id])->update($request->only([
             'course_id',
             'name',
+            'percentage',
+            'grade',
         ]));
 
         return redirect()->route('activity.show', $id);
