@@ -5,31 +5,32 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{__('messages.periods')}}</div>
-
+                {{ Breadcrumbs::render('dashboard') }}
                 <div class="card-body">
-                    <ul>
-                        @foreach ($data['periods'] as $period)
-                            <li>
-                                <a href="{{ route('period.show', $period->getId()) }}">
-                                    {{ $period->getName() }}
-                                </a>
+                    @foreach ($data['periods'] as $period)
+                        <a href="{{ route('period.show', ['id' => $period->getId()]) }}">
+                            {{ $period->getName() }}
+                        </a>
 
-                                <form action="{{ route('period.edit', $period->getId()) }}" method="get">
-                                    <button type="submit" class="btn btn-primary">{{ __('messages.edit') }}</button>
-                                </form>
+                        <div class="row justify-content-end">
+                            <form class="form-group" action="{{ route('period.edit', ['id' => $period->getId()]) }}" method="GET">
+                                <button class="btn" type="submit">
+                                    <img src="https://img.icons8.com/android/24/000000/edit.png">
+                                </button>
+                            </form>
 
-                                <form action="{{ route('period.delete', $period->getId()) }}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">{{ __('messages.delete') }}</button>
-                                </form>
-                            </li>
-                        @endforeach
-                    </ul>
+                            <form class="form-group" action="{{ route('period.delete', ['id' => $period->getId()]) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn" type="submit">
+                                    <img src="https://img.icons8.com/material-outlined/24/000000/delete-forever.png">
+                                </button>
+                            </form>
+                        </div>
+                    @endforeach
 
                     <form action="{{ route('period.new') }}" method="get">
-                        <button type="submit" class="btn btn-primary">{{__('messages.new-period')}}</button>
+                        <button type="submit" class="btn btn-primary">{{ __('messages.new-period') }}</button>
                     </form>
                 </div>
             </div>

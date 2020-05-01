@@ -43,4 +43,8 @@ return [
     'update-course' => 'Actualizar Curso',
     'update-activity' => 'Actualizar Actividad',
     'empty-course' => 'Este curso está vacío... agrega algunas actividades :D',
+    'dashboard' => 'Página principal',
+    'period' => 'Periodo',
+    'course' => 'Curso',
+    'activity' => 'Actividad',
 ];
