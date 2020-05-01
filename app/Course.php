@@ -75,7 +75,7 @@ class Course extends Model
 
         foreach($activities as $activity) {
             $acum = $acum + $activity->getGrade() * $activity->getPercentage();
-            $percentLeft = $percentLeft + $activity->getPercentage();
+            $percentLeft = $percentLeft - $activity->getPercentage();
         }
 
         return (300 - $acum) / $percentLeft;
