@@ -11,9 +11,9 @@
                 </div>
                 <div class="card-body">
                     <div class="profile-photo-container text-center">
-                        <img class="rounded profile-photo" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" alt="profile photo">
+                        <img class="rounded profile-photo" src="{{ URL::asset('storage/profile-photos/'.$data['user']->getAvatar()) }}" alt="profile photo">
                         <br>
-                        <a href="{{ route('user.show', Auth::user()->getId() ) }}">Change photo</a>
+                        <a href="{{ route('user.edit_pp', Auth::user()->getId() ) }}">Change photo</a>
                     </div>
                     <table class="table profile-table">
                         <tbody>

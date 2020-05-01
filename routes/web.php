@@ -25,6 +25,8 @@ Route::get('/lang/{locale}', 'HomeController@lang');
 Route::get('/user/show/{id}', 'UserController@show')->name('user.show');
 Route::get('/user/edit/{id}', 'UserController@edit')->name('user.edit');
 Route::post('/user/update/{id}', 'UserController@update')->name('user.update');
+Route::get('/user/edit_pp/{id}', 'UserController@editProfilePhoto')->name('user.edit_pp');
+Route::post('/user/upload', 'UserController@upload')->name('user.upload');
 
 // Period routes
 Route::get('/period/index', 'PeriodController@index')->name('period.index');

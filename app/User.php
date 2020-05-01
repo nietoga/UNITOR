@@ -20,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'avatar',
         'type',
     ];
 
@@ -97,6 +97,25 @@ class User extends Authenticatable
      */
     public function setPassword($password) {
         $this->attributes['password'] = Hash::make($password);
+    }
+
+    /**
+     * Returns User avatar
+     *
+     * @return string
+     */
+    public function getAvatar() {
+        return $this->attributes['avatar'];
+    }
+
+    /**
+     * Sets the avatar of the User
+     *
+     * @param string $avatar
+     * @return void
+     */
+    public function setAvatar() {
+        $this->attributes['avatar'] = "user".$this->attributes['id'].".png";
     }
 
     /**
