@@ -50,4 +50,8 @@ return [
     'user_name' => 'Name',
     'user_email' => 'Email',
     'user_profile' => 'User profile',
+    'cancel' => 'Cancel',
+    'upload' => 'Upload',
+    'image' => 'Image',
+    'change_photo' => 'Change photo',
 ];

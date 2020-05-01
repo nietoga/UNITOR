@@ -50,5 +50,9 @@ return [
     'user_name' => 'Nombre',
     'user_email' => 'Correo electrónico',
     'user_profile' => 'Perfil de usuario',
+    'cancel' => 'Cancelar',
+    'upload' => 'Cargar',
+    'image' => 'Imagen',
+    'change_photo' => 'Cambiar foto',
 
 ];

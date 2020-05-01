@@ -13,7 +13,7 @@
                     <div class="profile-photo-container text-center">
                         <img class="rounded profile-photo" src="{{ URL('https://unitor-static-files.s3.amazonaws.com/profile-photos/'.$data['user']->getAvatar()) }}" alt="profile photo">
                         <br>
-                        <a href="{{ route('user.edit_pp', Auth::user()->getId() ) }}">Change photo</a>
+                        <a href="{{ route('user.edit_pp', Auth::user()->getId() ) }}">{{__('messages.change_photo')}}</a>
                     </div>
                     <table class="table profile-table">
                         <tbody>

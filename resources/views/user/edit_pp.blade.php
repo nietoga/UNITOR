@@ -6,7 +6,7 @@
         <div class="col-md-8">
             @include('util.message')
             <div class="card">
-                <div class="card-header">Upload image</div>
+                <div class="card-header">{{__('messages.user_profile')}}</div>
                 <div class="card-body">
                     <div class="profile-photo-container text-center">
                         <img class="rounded profile-photo" src="{{ URL('https://unitor-static-files.s3.amazonaws.com/profile-photos/'.$data['user']->getAvatar()) }}" />
@@ -15,11 +15,11 @@
                         @csrf
                         <input type="hidden" name="user_id" value="{{ $data['user']->getId() }}">
                         <div class="form-group">
-                            <label>Image:</label>
+                            <label>{{__('messages.image')}}:</label>
                             <input type="file" name="profile_image" />
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                        <a href="{{ route('user.show', Auth::user()->getId() ) }}" class="btn btn-danger">Cancel</a>
+                        <button type="submit" class="btn btn-primary">{{__('messages.upload')}}</button>
+                        <a href="{{ route('user.show', Auth::user()->getId() ) }}" class="btn btn-danger">{{__('messages.cancel')}}</a>
                     </form>
                 </div>
             </div>
