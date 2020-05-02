@@ -33,6 +33,7 @@ return [
     'report' => 'Report',
     'new-activity' => 'New Activity',
     'you-need' => 'You need to get :needed in the remaning :remaining %',
+    'not-need' => 'You already passed the course! You don\'t need anything in the final activity',
     'enter-percentage' => 'Enter percentage',
     'enter-grade' => 'Enter grade',
     'name' => 'Name',
@@ -50,4 +51,8 @@ return [
     'user_name' => 'Name',
     'user_email' => 'Email',
     'user_profile' => 'User profile',
+    'dashboard' => 'Dashboard',
+    'period' => 'Period',
+    'course' => 'Course',
+    'activity' => 'Activity',
 ];

@@ -33,6 +33,7 @@ return [
     'report' => 'Reportar',
     'new-activity' => 'Nueva Actividad',
     'you-need' => 'Necesitas obtener :needed en el :remaining % restante',
+    'not-need' => 'Ya pasaste el curso! No necesitas nada en el final',
     'enter-percentage' => 'Ingrese el porcentaje',
     'enter-grade' => 'Ingrese la nota',
     'course-name' => 'Nombre del curso',
@@ -50,5 +51,8 @@ return [
     'user_name' => 'Nombre',
     'user_email' => 'Correo electrónico',
     'user_profile' => 'Perfil de usuario',
-
+    'dashboard' => 'Página principal',
+    'period' => 'Periodo',
+    'course' => 'Curso',
+    'activity' => 'Actividad',
 ];
