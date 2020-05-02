@@ -1,3 +1,10 @@
+body {
+    background-image: url(/img/pencils.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 .app-footer {
     padding: 10px;
 }
