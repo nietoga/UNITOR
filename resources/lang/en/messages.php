@@ -47,4 +47,6 @@ return [
     'period' => 'Period',
     'course' => 'Course',
     'activity' => 'Activity',
+    'advise' => 'Seems like you need some help. We advise you to buy the book ":book_title" at :book_url!',
+
 ];

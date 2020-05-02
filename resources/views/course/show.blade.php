@@ -37,6 +37,13 @@
                         <h5>{{ __('messages.empty-course') }}</h5>
                     @endif
 
+                    @if ($data['needed'] > 3.0 && $data['advise'] != [])
+                        <div>
+                            <h5>{{ __('messages.advise', ['book_title' => $data['advise']['title'], 'book_url' => $data['advise']['url']]) }}</h5>
+                            <img src="{{ $data['advise']['cover_url'] }}">
+                        </div>
+                    @endif
+
                     <form action="{{ route('activity.new') }}" method="get">
                         <input type="hidden" name="course_id" value="{{ $data['course']->getId() }}">
                         <button type="submit" class="btn btn-primary">{{ __('messages.new-activity') }}</button>
