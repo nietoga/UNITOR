@@ -76,6 +76,12 @@
                                                 </button>
                                             </form>
                                             @endif
+                                            @if($comment->getReported())
+                                            <div class="comment-reported text-center aling-bottom">
+                                                <img src="https://img.icons8.com/office/30/000000/high-importance.png" />
+                                                <scan>Reported</scan>
+                                            </div>
+                                            @else
                                             @if($data["allowed_ops"])
                                             <a class="btn form-group comments-btns fixed-btn" href="/post/{{$data['post']->getId()}}/fix_comment/{{$comment->getId()}}">
                                                 @if($comment->getFixed())
@@ -86,6 +92,7 @@
                                             </a>
                                             @endif
                                         </div>
+
                                         <div class="row">
                                             <form class="form-group report-container" action="{{ route('comment.report', [ 'id' => $comment->getId() ]) }}" method="POST">
                                                 @csrf
@@ -95,6 +102,7 @@
                                                 </button>
                                             </form>
                                         </div>
+                                        @endif
                                     </div>
                                 </div>
                             </li>

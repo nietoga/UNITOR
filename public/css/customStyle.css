@@ -149,3 +149,16 @@ li.list-group-item:hover {
     text-align: center;
     margin: 20px;
 }
+
+.comment-reported{
+    width: 100%;
+    margin-top: 10px;
+}
+
+.comment-reported scan{
+    background-color: transparent;
+    border: none;
+    padding: 2px;
+    font-size: 12px;
+    color: #ff6666;
+}
