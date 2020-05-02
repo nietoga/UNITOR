@@ -12,7 +12,6 @@ Breadcrumbs::for('period', function ($trail, $period) {
 });
 
 Breadcrumbs::for('user', function ($trail, $user) {
-    $trail->parent('home');
     $trail->push($user->getName(), route('user.show', $user->getId()));
 });
 

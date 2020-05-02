@@ -4,7 +4,6 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-        {{ Breadcrumbs::render('user', $data['user']) }}
             <div class="card">
                 <div class="card-header d-flex">{{ __('messages.user_profile')}}
                     <a class="ml-auto btn profile-edit-btn" href="{{ route('user.edit', Auth::user()->getId() ) }}"><img src="https://img.icons8.com/android/24/000000/edit.png"></a>
