@@ -4,6 +4,16 @@ Breadcrumbs::for('home', function ($trail) {
     $trail->push('Home', route('home'));
 });
 
+Breadcrumbs::for('admin', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Admin panel', route('admin.index'));
+});
+
+Breadcrumbs::for('admin-comments', function ($trail) {
+    $trail->parent('admin');
+    $trail->push('Comments', route('admin.index'));
+});
+
 Breadcrumbs::for('period', function ($trail, $period) {
     $trail->parent('home');
     $trail->push($period->getName(), route('period.show', $period->getId()));

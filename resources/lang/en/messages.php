@@ -5,13 +5,15 @@ return [
                 planify your study time to gain better results and stay more satisfied 
                 with your performance. It also provides you a forum where ask to other 
                 users for problems and questions you have about your homeworks.',
-    'admin_title' => 'Adminitration Page. There are the reported messages',
+    'admin_title' => 'Adminitration Page',
+    'admin-comments' => 'Here you can manage the reported comments.',
     'lang_sel' => 'language',
     'posts' => 'Posts',
     'new-post' => 'New post',
     'forum-title' => 'Forum',
     'forum-description' => 'This is the forum where you can ask other users for help with problems you have about your subjects and homeworks.',
     'delete' => 'Delete',
+    'acept' => 'Acept',
     'edit' => 'Edit',
     'comments' => 'Comments',
     'by' => 'By',

@@ -140,3 +140,7 @@ li.list-group-item:hover {
     margin: 0px;
     padding: 0px;
 }
+
+.page-description{
+    margin: 20px;
+}

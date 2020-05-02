@@ -75,3 +75,4 @@ Route::post('/commment/report/{id}', 'CommentController@report')->name('comment.
 // Admin routes
 Route::get('/admin', 'AdminController@index');
 Route::get('/admin/index', 'AdminController@index')->name('admin.index');
+Route::get('/admin/comments', 'AdminController@comments')->name('admin.comments');

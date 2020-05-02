@@ -16,7 +16,13 @@ class AdminController extends Controller
     public function index()
     {
         session()->put('module', 'use-icons');
+        return view('admin.index');
+    }
+
+    public function comments()
+    {
+        session()->put('module', 'use-icons');
         $data["comments"] = Comment::where('reported', true)->get();
-        return view('admin.index')->with("data", $data);
+        return view('admin.comments')->with("data", $data);
     }
 }
