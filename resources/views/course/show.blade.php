@@ -38,7 +38,11 @@
                     </ul>
                     <div class="grade-note">
                         @if (count($data['course']->activities) > 0)
+                        @if ($data['needed'] < 0)
+                        <h5>{{ __('messages.not-need') }}</h5>
+                        @else
                         <h5>{{ __('messages.you-need', ['needed' => $data['needed'], 'remaining' => $data['remaining']]) }}</h5>
+                        @endif
                         @else
                         <h5>{{ __('messages.empty-course') }}</h5>
                         @endif

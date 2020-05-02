@@ -56,7 +56,7 @@ class CourseController extends Controller
     public function show($id)
     {
         $course = Course::with('activities')->findOrFail($id);
-        $needed = $course->howMuchDoINeed();
+        $needed = round($course->howMuchDoINeed(), 2);
         $remaining = $course->remainingPercentage();
 
         $data = [
