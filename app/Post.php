@@ -12,6 +12,7 @@ class Post extends Model
         'title', 
         'content', 
         'user_id',
+        'reported'
     ];
 
     // Id
@@ -63,6 +64,26 @@ class Post extends Model
     public function setUserId($user_id)
     {
         $this->attributes['user_id'] = $user_id;
+    }
+
+    /**
+     * Get post reported field.
+     * 
+     * @return int User identifier.
+     */
+    public function getReported()
+    {
+        return $this->attributes['user_id'];
+    }
+
+    /**
+     * Set post reported field.
+     * 
+     * @param reported Reported value.
+     */
+    public function setReported($reported)
+    {
+        $this->attributes['reported'] = $reported;
     }
 
     public function comments()

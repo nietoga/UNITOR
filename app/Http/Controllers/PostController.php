@@ -157,4 +157,16 @@ class PostController extends Controller
         $comment->save();
         return redirect()->route('post.show', ['id' => $post_id]);
     }
+
+    /**
+     * Report a post
+     * 
+     * @param int Posts id
+     */
+    public function report(Request $request, $id){
+        $post = Post::find($id);
+        $post->setReported($request["reported"]);
+        $post->save();
+        return back();
+    }
 }

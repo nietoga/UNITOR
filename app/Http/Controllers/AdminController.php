@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Post;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -24,5 +25,11 @@ class AdminController extends Controller
         session()->put('module', 'use-icons');
         $data["comments"] = Comment::where('reported', true)->get();
         return view('admin.comments')->with("data", $data);
+    }
+
+    public function posts(){
+        session()->put('module', 'use-icons');
+        $data["posts"] = Post::where('reported', true)->get();
+        return view('admin.posts')->with("data", $data);
     }
 }

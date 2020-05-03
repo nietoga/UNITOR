@@ -1,27 +1,21 @@
 <?php
 
-Breadcrumbs::for('home', function ($trail) {
-    $trail->push('Home', route('home'));
-});
-
 Breadcrumbs::for('admin', function ($trail) {
-    $trail->parent('home');
     $trail->push('Admin panel', route('admin.index'));
 });
 
 Breadcrumbs::for('admin-comments', function ($trail) {
     $trail->parent('admin');
-    $trail->push('Comments', route('admin.index'));
+    $trail->push('Reported Comments', route('admin.comments'));
+});
+
+Breadcrumbs::for('admin-posts', function ($trail) {
+    $trail->parent('admin');
+    $trail->push('Reported posts', route('admin.posts'));
 });
 
 Breadcrumbs::for('period', function ($trail, $period) {
-    $trail->parent('home');
     $trail->push($period->getName(), route('period.show', $period->getId()));
-});
-
-Breadcrumbs::for('user', function ($trail, $user) {
-    $trail->parent('home');
-    $trail->push($user->getName(), route('user.show', $user->getId()));
 });
 
 Breadcrumbs::for('course', function ($trail, $course) {

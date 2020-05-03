@@ -7,6 +7,7 @@ return [
                 users for problems and questions you have about your homeworks.',
     'admin_title' => 'Adminitration Page',
     'admin-comments' => 'Here you can manage the reported comments.',
+    'admin-posts' => 'Here you can manage the reported posts.',
     'lang_sel' => 'language',
     'posts' => 'Posts',
     'new-post' => 'New post',

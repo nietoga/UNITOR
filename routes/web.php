@@ -62,6 +62,7 @@ Route::delete('/post/delete/{id}', 'PostController@delete')->name('post.delete')
 Route::post('/post/edit/{id}', 'PostController@edit')->name('post.edit');
 Route::patch('/post/update/{id}', 'PostController@update')->name('post.update');
 Route::get('/post/{post_id}/fix_comment/{comment_id}', 'PostController@fix')->name('post.fix');
+Route::post('/post/report/{id}', 'PostController@report')->name('post.report');
 
 // Comments routes
 Route::post('/comment/save', 'CommentController@save')->name('comment.save');
@@ -76,3 +77,4 @@ Route::post('/commment/report/{id}', 'CommentController@report')->name('comment.
 Route::get('/admin', 'AdminController@index');
 Route::get('/admin/index', 'AdminController@index')->name('admin.index');
 Route::get('/admin/comments', 'AdminController@comments')->name('admin.comments');
+Route::get('/admin/posts', 'AdminController@posts')->name('admin.posts');

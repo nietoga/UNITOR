@@ -6,6 +6,7 @@ return [
     También te brinda un foro donde puede pregutar a otros usuarios sobre problemas y dudas de tus tareas.',
     'admin_title' => 'Página administrativa',
     'admin-comments' => 'Aquí puede administrar los comentarios reportados.',
+    'admin-posts' => 'Aquí puede administrar las publicaciones reportadas.',
     'lang_sel' => 'idioma',
     'posts' => 'Publicaciones',
     'new-post' => 'Nuevo',

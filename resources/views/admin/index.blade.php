@@ -9,6 +9,7 @@
                 <div class="card-header">{{ __('messages.admin_title') }}</div>
                 <div class="card-body">
                     <a class="btn btn-danger" href="{{ route('admin.comments') }}">{{ __('messages.comments')}}</a>
+                    <a class="btn btn-danger" href="{{ route('admin.posts') }}">{{ __('messages.posts')}}</a>
                 </div>
             </div>
         </div>
