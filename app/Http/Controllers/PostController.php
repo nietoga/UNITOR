@@ -29,7 +29,7 @@ class PostController extends Controller
     {
         $data = []; //to be sent to the view
         $post = Post::with("comments")->find($id);
-        $commentsList =$post->comments()->where('reported', false)->orderByDesc('fixed')->orderByDesc('score')->get();
+        $commentsList =$post->comments()->orderByDesc('fixed')->orderByDesc('score')->get();
         $data["title"] = $post->getTitle();
         $data["post"] = $post;
         $user = $post->user()->get();

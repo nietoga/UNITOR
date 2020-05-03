@@ -11,7 +11,6 @@
                         @csrf
                         @method('PATCH')
                         <div class="form-group">
-                            <input type="hidden" name="period_id" value="{{ $data['course']->period->getId() }}">
                             <label for="name">{{ __('messages.name') }}</label>
                             <input type="text" class="form-control" id="name" name="name" placeholder="{{ __('messages.enter-name') }}" value="{{ $data['course']->getName() }}">
                         </div>

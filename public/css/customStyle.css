@@ -121,11 +121,6 @@ li.list-group-item:hover {
     float: right;
 }
 
-.fixed-btn {
-    margin-left:auto; 
-    margin-right:0;
-}
-
 .forum-options{
     float: left;
 }
@@ -147,4 +142,38 @@ li.list-group-item:hover {
 
 .page-description{
     margin: 20px;
+}
+
+.period-btn{
+    margin-top: 20px;
+}
+
+.grade-note{
+    text-align: center;
+    margin: 20px;
+}
+
+.comment-reported{
+    width: 100%;
+    margin-top: 10px;
+}
+
+.post-reported{
+    margin-top: 10px;
+}
+
+.post-reported scan{
+    background-color: transparent;
+    border: none;
+    padding: 2px;
+    font-size: 12px;
+    color: #ff6666;
+}
+
+.comment-reported scan{
+    background-color: transparent;
+    border: none;
+    padding: 2px;
+    font-size: 12px;
+    color: #ff6666;
 }

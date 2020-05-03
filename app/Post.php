@@ -73,7 +73,7 @@ class Post extends Model
      */
     public function getReported()
     {
-        return $this->attributes['user_id'];
+        return $this->attributes['reported'];
     }
 
     /**

@@ -1,4 +1,5 @@
 <?php
+use DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs;
 
 Breadcrumbs::for('admin', function ($trail) {
     $trail->push('Admin panel', route('admin.index'));
@@ -14,16 +15,25 @@ Breadcrumbs::for('admin-posts', function ($trail) {
     $trail->push('Reported posts', route('admin.posts'));
 });
 
+Breadcrumbs::for('dashboard', function ($trail) {
+    $trail->push(__('messages.dashboard'), route('period.index'));
+});
+
 Breadcrumbs::for('period', function ($trail, $period) {
-    $trail->push($period->getName(), route('period.show', $period->getId()));
+    $trail->parent('dashboard');
+    $trail->push(__('messages.period') . ': ' . $period->getName(), route('period.show', $period->getId()));
+});
+
+Breadcrumbs::for('user', function ($trail, $user) {
+    $trail->push($user->getName(), route('user.show', $user->getId()));
 });
 
 Breadcrumbs::for('course', function ($trail, $course) {
     $trail->parent('period', $course->period);
-    $trail->push($course->getName(), route('course.show', $course->getId()));
+    $trail->push(__('messages.course') . ': ' . $course->getName(), route('course.show', $course->getId()));
 });
 
 Breadcrumbs::for('activity', function ($trail, $activity) {
     $trail->parent('course', $activity->course);
-    $trail->push($activity->getName(), route('activity.show', $activity->getId()));
+    $trail->push(__('messages.activity') . ': ' . $activity->getName(), route('activity.show', $activity->getId()));
 });

@@ -33,8 +33,10 @@ return [
     'enter-name' => 'Ingrese el nombre',
     'panel' => 'Panel',
     'report' => 'Reportar',
+    'reported' => 'Reportado',
     'new-activity' => 'Nueva Actividad',
     'you-need' => 'Necesitas obtener :needed en el :remaining % restante',
+    'not-need' => 'Ya pasaste el curso! No necesitas nada en el final',
     'enter-percentage' => 'Ingrese el porcentaje',
     'enter-grade' => 'Ingrese la nota',
     'course-name' => 'Nombre del curso',
@@ -56,5 +58,8 @@ return [
     'upload' => 'Cargar',
     'image' => 'Imagen',
     'change_photo' => 'Cambiar foto',
-
+    'dashboard' => 'Página principal',
+    'period' => 'Periodo',
+    'course' => 'Curso',
+    'activity' => 'Actividad',
 ];

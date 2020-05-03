@@ -38,7 +38,7 @@ class CourseController extends Controller
      */
     public function save(Request $request)
     {
-        Course::validate($request);
+        Course::validate($request, ['period_id', 'name']);
         Course::create($request->only([
             'period_id',
             'name',
@@ -56,7 +56,7 @@ class CourseController extends Controller
     public function show($id)
     {
         $course = Course::with('activities')->findOrFail($id);
-        $needed = $course->howMuchDoINeed();
+        $needed = round($course->howMuchDoINeed(), 2);
         $remaining = $course->remainingPercentage();
 
         $data = [
@@ -89,12 +89,8 @@ class CourseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Notice here is a possibly big - big mistake
-        // Request should come with period_id to validate
-        // That's possibly not what we desire
-        Course::validate($request);
+        Course::validate($request, ['name']);
         Course::where(['id' => $id])->update($request->only([
-            'period_id',
             'name',
         ]));
 
