@@ -5,31 +5,31 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{__('messages.periods')}}</div>
+                <div class="card-header text-center h1">{{__('messages.periods')}}</div>
 
-                <div class="card-body">
-                    <ul>
+                <div class="card-body text-center">
+                    <ul class="list">
                         @foreach ($data['periods'] as $period)
-                            <li>
-                                <a href="{{ route('period.show', $period->getId()) }}">
-                                    {{ $period->getName() }}
-                                </a>
-
-                                <form action="{{ route('period.edit', $period->getId()) }}" method="get">
-                                    <button type="submit" class="btn btn-primary">{{ __('messages.edit') }}</button>
-                                </form>
-
-                                <form action="{{ route('period.delete', $period->getId()) }}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">{{ __('messages.delete') }}</button>
-                                </form>
+                            <li class="row justify-content-md-center">
+                                <div class="list_item m-1">
+                                    <a class="col list-link" href="{{ route('period.show', $period->getId()) }}">
+                                        {{ $period->getName() }}
+                                    </a>
+                                    <form action="{{ route('period.edit', $period->getId()) }}" method="get">
+                                        <button type="submit" class="btn btn-primary col">{{ __('messages.edit') }}</button>
+                                    </form>
+                                    <form action="{{ route('period.delete', $period->getId()) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">{{ __('messages.delete') }}</button>
+                                    </form>
+                                </div>
                             </li>
                         @endforeach
                     </ul>
 
                     <form action="{{ route('period.new') }}" method="get">
-                        <button type="submit" class="btn btn-primary">{{__('messages.new-period')}}</button>
+                        <button type="submit" class="btn btn-success">{{__('messages.new-period')}}</button>
                     </form>
                 </div>
             </div>
