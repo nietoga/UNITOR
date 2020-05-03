@@ -38,9 +38,11 @@
                     @endif
 
                     @if ($data['needed'] > 3.0 && $data['advise'] != [])
-                        <div>
-                            <h5>{{ __('messages.advise', ['book_title' => $data['advise']['title'], 'book_url' => $data['advise']['url']]) }}</h5>
-                            <img src="{{ $data['advise']['cover_url'] }}">
+                        <div class="rounded course-advise text-center">
+                            <p class="advise-text">{{ __('messages.advise', ['book_title' => $data['advise']['title']]) }}
+                            <b><a href="{{$data['advise']['url']}}">{{ __('messages.here') }}</a></b>
+                            </p>
+                            <img class="rounded"src="{{ $data['advise']['cover_url'] }}">
                         </div>
                     @endif
 

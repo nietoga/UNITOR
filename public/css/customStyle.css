@@ -125,3 +125,13 @@ li.list-group-item:hover {
 .forum-options{
     float: left;
 }
+
+.course-advise{
+    margin: 20px;
+    background-color: #E8F8F5;
+    padding: 10px;
+}
+
+.advise-text{
+    font-size: 16px;
+}
