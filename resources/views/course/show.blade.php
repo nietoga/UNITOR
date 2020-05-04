@@ -38,21 +38,28 @@
                     </ul>
                     <div class="grade-note">
                         @if (count($data['course']->activities) > 0)
-                        @if ($data['needed'] < 0)
-                        <h5>{{ __('messages.not-need') }}</h5>
-                        @else
-                        <h5>{{ __('messages.you-need', ['needed' => $data['needed'], 'remaining' => $data['remaining']]) }}</h5>
-                        @endif
-                        @else
-                        <h5>{{ __('messages.empty-course') }}</h5>
-                        @endif
+                        @if ($data['needed'] < 0) <h5>{{ __('messages.not-need') }}</h5>
+                            @else
+                            <h5>{{ __('messages.you-need', ['needed' => $data['needed'], 'remaining' => $data['remaining']]) }}</h5>
+                            @endif
+                            @else
+                            <h5>{{ __('messages.empty-course') }}</h5>
+                            @endif
+
+                            @if ($data['needed'] > 3.0 && $data['advise'] != [])
+                            <div class="rounded course-advise text-center">
+                                <p class="advise-text">{{ __('messages.advise', ['book_title' => $data['advise']['title']]) }}
+                                    <b><a href="{{$data['advise']['url']}}">{{ __('messages.here') }}</a></b>
+                                </p>
+                                <img class="rounded advise-img" src="{{ $data['advise']['cover_url'] }}">
+                            </div>
+                            @endif
                     </div>
-                    <div class="period-btn">
-                        <form action="{{ route('activity.new') }}" method="get">
-                            <input type="hidden" name="course_id" value="{{ $data['course']->getId() }}">
-                            <button type="submit" class="btn btn-primary">{{ __('messages.new-activity') }}</button>
-                        </form>
-                    </div>
+
+                    <form action="{{ route('activity.new') }}" method="get">
+                        <input type="hidden" name="course_id" value="{{ $data['course']->getId() }}">
+                        <button type="submit" class="btn btn-primary">{{ __('messages.new-activity') }}</button>
+                    </form>
                 </div>
             </div>
         </div>

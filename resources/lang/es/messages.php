@@ -62,4 +62,7 @@ return [
     'period' => 'Periodo',
     'course' => 'Curso',
     'activity' => 'Actividad',
+    'advise' => 'Parece que necesitas ayuda. Te recomendamos comprar el libro ":book_title". Lo puedes encontrar ',
+    'here' => 'aquí',
+
 ];

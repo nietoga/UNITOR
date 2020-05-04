@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Course;
+use App\Interfaces\BookAdvisor;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
+use function GuzzleHttp\json_decode;
 
 class CourseController extends Controller
 {
@@ -63,7 +67,13 @@ class CourseController extends Controller
             'course' => $course,
             'needed' => $needed,
             'remaining' => $remaining,
+            'advise' => [],
         ];
+
+        if ($needed > 3.0) {
+            $bookAdvisor = app(BookAdvisor::class);
+            $data['advise'] = $bookAdvisor->getAdvise($course->getName());
+        }
 
         return view('course.show')->with('data', $data);
     }

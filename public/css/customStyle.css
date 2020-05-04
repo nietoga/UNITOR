@@ -177,3 +177,18 @@ li.list-group-item:hover {
     font-size: 12px;
     color: #ff6666;
 }
+
+.course-advise{
+    margin: 20px;
+    background-color: #E8F8F5;
+    padding: 10px;
+}
+
+.advise-text{
+    font-size: 16px;
+}
+
+.advise-img{
+    max-width: 150px;
+    max-height: 180px;
+}
