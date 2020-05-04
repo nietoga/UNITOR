@@ -135,3 +135,8 @@ li.list-group-item:hover {
 .advise-text{
     font-size: 16px;
 }
+
+.advise-img{
+    max-width: 150px;
+    max-height: 180px;
+}

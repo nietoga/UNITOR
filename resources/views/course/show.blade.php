@@ -42,7 +42,7 @@
                             <p class="advise-text">{{ __('messages.advise', ['book_title' => $data['advise']['title']]) }}
                             <b><a href="{{$data['advise']['url']}}">{{ __('messages.here') }}</a></b>
                             </p>
-                            <img class="rounded"src="{{ $data['advise']['cover_url'] }}">
+                            <img class="rounded advise-img" src="{{ $data['advise']['cover_url'] }}">
                         </div>
                     @endif
 
