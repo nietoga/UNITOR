@@ -16,3 +16,5 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('/courses', 'Api\CourseApi@index')->name("api.course.index");
+Route::get('/courses/{id}', 'Api\CourseApi@show')->name("api.course.show");
