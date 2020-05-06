@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Api;
+use App\Http\Resources\Course as CourseResource;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Course;
@@ -9,11 +10,11 @@ class CourseApi extends Controller
 {
     public function index()
     {
-        return Course::all();
+        return CourseResource::collection(Course::all());
     }
 
     public function show($id)
     {
-        return Course::findOrFail($id);
+        return new CourseResource(Course::findOrFail($id));
     }
 }
