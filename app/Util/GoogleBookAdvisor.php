@@ -12,7 +12,7 @@ class GoogleBookAdvisor implements BookAdvisor {
         $full_url = 'https://www.googleapis.com/books/v1/volumes';
         $full_url .= '?q=' . $query;
         $full_url .= '&maxResults=1&orderBy=relevance';
-        $full_url .= '&key=AIzaSyCit4npfxed1M91GLm3m-dHceSUgaUI1_s';
+        $full_url .= '&key=' . config('services.google.key');
 
         $client = new Client();
         $advise = [];
