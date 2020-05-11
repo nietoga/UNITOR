@@ -99,7 +99,7 @@
                                             </div>
                                             @else
                                             @if($data["allowed_ops"])
-                                            <a class="btn form-group comments-btns" href="/post/{{$data['post']->getId()}}/fix_comment/{{$comment->getId()}}">
+                                            <a class="btn form-group comments-btns" href="{{/post/{{$data['post']->getId()}}/fix_comment/{{$comment->getId()}}">
                                                 @if($comment->getFixed())
                                                 <img src="https://img.icons8.com/ios-filled/26/000000/star.png">
                                                 @else
