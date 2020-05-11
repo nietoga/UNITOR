@@ -4,11 +4,7 @@
     </IfModule>
 
     RewriteEngine On
-
-    # /public to /
-    RewriteCond %{REQUEST_URI} !^public
-    RewriteRule ^(.*)$ public/$1 [L]
-
+    RewriteBase /
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
