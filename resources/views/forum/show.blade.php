@@ -20,7 +20,7 @@
                             <form class="form-group report-container" action="{{ route('post.report', [ 'id' => $data['post']->getId() ]) }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="reported" value="1">
-                                <button class="report-btn comments-btns" type="submit">
+                                <button onclick="return confirm('Are you sure?')" class="report-btn comments-btns" type="submit">
                                     {{__('messages.report')}}
                                 </button>
                             </form>
@@ -33,7 +33,7 @@
                         <form class="form-group" action="{{ route('post.delete', [ 'id' => $data['post']['id'] ]) }}" method="POST">
                             @csrf
                             {{ method_field('DELETE') }}
-                            <input class="btn btn-danger" type="submit" value="{{__('messages.delete')}}" />
+                            <input onclick="return confirm('Are you sure?')" class="btn btn-danger" type="submit" value="{{__('messages.delete')}}" />
                         </form>
 
                         <form class="form-group" action="{{ route('post.edit', [ 'id' => $data['post']['id'] ]) }}" method="POST">
@@ -78,7 +78,7 @@
                                     <div class="col-xs-3 col-md-3 btns-box">
                                         <div class="action form-inline comments-btns-container d-flex justify-content-end">
                                             @if($comment->user == Auth::user() )
-                                            <form class="rounded form-group comments-btns" action="{{ route('comment.delete', [ 'id' => $comment->getId() ]) }}" method="POST">
+                                            <form class="rounded form-group comments-btns" onclick="return confirm('Are you sure?')" action="{{ route('comment.delete', [ 'id' => $comment->getId() ]) }}" method="POST">
                                                 @csrf
                                                 {{ method_field('DELETE') }}
                                                 <button class="btn" type="submit">
@@ -99,7 +99,7 @@
                                             </div>
                                             @else
                                             @if($data["allowed_ops"])
-                                            <a class="btn form-group comments-btns" href="{{/post/{{$data['post']->getId()}}/fix_comment/{{$comment->getId()}}">
+                                            <a class="btn form-group comments-btns" onclick="return confirm('Are you sure?')" href="{{ route( 'post.fix', ['post_id' => $data['post']->getId(), 'comment_id' => $comment->getId()] ) }}">
                                                 @if($comment->getFixed())
                                                 <img src="https://img.icons8.com/ios-filled/26/000000/star.png">
                                                 @else
@@ -113,7 +113,7 @@
                                             <form class="form-group report-container" action="{{ route('comment.report', [ 'id' => $comment->getId() ]) }}" method="POST">
                                                 @csrf
                                                 <input type="hidden" name="reported" value="1">
-                                                <button class="report-btn comments-btns" type="submit">
+                                                <button class="report-btn comments-btns" onclick="return confirm('Are you sure?')" type="submit">
                                                     {{__('messages.report')}}
                                                 </button>
                                             </form>
