@@ -95,6 +95,8 @@
             @yield('content')
         </main>
     </div>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 </body>
 <footer>
     <div class="app-footer">
