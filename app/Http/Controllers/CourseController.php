@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Course;
 use App\Interfaces\BookAdvisor;
+use App\Util\GogglesAdvisor;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -68,11 +69,17 @@ class CourseController extends Controller
             'needed' => $needed,
             'remaining' => $remaining,
             'advise' => [],
+            'goggles' => [],
         ];
 
         if ($needed > 3.0) {
             $bookAdvisor = app(BookAdvisor::class);
             $data['advise'] = $bookAdvisor->getAdvise($course->getName());
+
+            if ($data['advise']['cover_url'] == null) {
+                $gogglesAdvisor = new GogglesAdvisor();
+                $data['goggles'] = $gogglesAdvisor->getRandomGoggles();
+            }
         }
 
         return view('course.show')->with('data', $data);

@@ -31,7 +31,7 @@ class GoogleBookAdvisor implements BookAdvisor {
                 if (property_exists($volumeInfo, 'imageLinks') && property_exists($volumeInfo->imageLinks, 'thumbnail')) {
                     $advise['cover_url'] = $volumeInfo->imageLinks->thumbnail;
                 } else {
-                    $advise['cover_url'] = 'https://i.redd.it/m7gjgqdiy2v11.jpg';
+                    $advise['cover_url'] = null;
                 }
             }
         }
