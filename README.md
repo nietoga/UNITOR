@@ -2,7 +2,8 @@
 
 Manage you studies!
 
-Domain: unitor.tk/public
+Domain:
+http://unitor.tk/public/
 
 ## How to execute UNITOR
 
