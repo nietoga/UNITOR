@@ -80,7 +80,7 @@
             </div>
             <div>
                 <span class="language-label">{{ __('messages.lang_sel') }}:</span>
-                <a href="/lang/en"><i class="fa fa-language"></i>EN</a> | <a href="/lang/es"><i class="fa fa-language"></i>ES</a>
+                <a href="{{ route('name', [ 'locale' => 'en']) }}"><i class="fa fa-language"></i>EN</a> | <a href="{{ route('name', [ 'locale' => 'es']) }}"><i class="fa fa-language"></i>ES</a>
             </div>
         </nav>
         <div class="forum-options col-xs-2 col-md-2">

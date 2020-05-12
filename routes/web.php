@@ -19,7 +19,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/forum', 'HomeController@forum')->name('forum');
 
 // Localization
-Route::get('/lang/{locale}', 'HomeController@lang');
+Route::get('/lang/{locale}', 'HomeController@lang')->name('name');
 
 // User routes
 Route::get('/user/show/{id}', 'UserController@show')->name('user.show');
