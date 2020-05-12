@@ -38,34 +38,36 @@
                     </ul>
                     <div class="grade-note">
                         @if (count($data['course']->activities) > 0)
-                        @if ($data['needed'] < 0) <h5>{{ __('messages.not-need') }}</h5>
+                            @if ($data['needed'] < 0)
+                                <h5>{{ __('messages.not-need') }}</h5>
                             @else
-                            <h5>{{ __('messages.you-need', ['needed' => $data['needed'], 'remaining' => $data['remaining']]) }}</h5>
+                                <h5>{{ __('messages.you-need', ['needed' => $data['needed'], 'remaining' => $data['remaining']]) }}</h5>
                             @endif
-                            @else
+                        @else
                             <h5>{{ __('messages.empty-course') }}</h5>
-                            @endif
+                        @endif
 
-                            @if ($data['needed'] > 3.0 && $data['advise'] != [])
+                        @if ($data['needed'] > 3.0 && $data['advise'] != [])
                             <div class="rounded course-advise text-center">
-                                <p class="advise-text">{{ __('messages.advise', ['book_title' => $data['advise']['title']]) }}
-                                    <b><a href="{{$data['advise']['url']}}">{{ __('messages.here') }}</a></b>
+                                <p class="advise-text">
+                                   {{ __('messages.advise', ['book_title' => $data['advise']['title']]) }}
+                                    <b><a href="{{ $data['advise']['url'] }}"> {{ __('messages.here') }} </a></b>
                                 </p>
 
-                                @if ($data['advise']['cover_url'] != null)
+                                @if (isset($data['advise']['cover_url']))
                                     <img class="rounded advise-img" src="{{ $data['advise']['cover_url'] }}">
                                 @endif
                             </div>
-                            @endif
+                        @endif
 
-                            @if ($data['goggles'] != [])
+                        @if ($data['goggles'] != [])
                             <div class="rounded course-advise text-center">
                                 <p class="advise-text">
                                     {{ __('messages.goggles-advise', ['reference' => $data['goggles']['reference']]) }}
                                 </p>
                                 <img class="rounded advise-img" src="{{ $data['goggles']['image'] }}">
                             </div>
-                            @endif
+                        @endif
                     </div>
 
                     <form action="{{ route('activity.new') }}" method="get">

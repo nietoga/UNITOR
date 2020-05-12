@@ -64,6 +64,6 @@ return [
     'activity' => 'Actividad',
     'advise' => 'Parece que necesitas ayuda. Te recomendamos comprar el libro ":book_title". Lo puedes encontrar ',
     'here' => 'aquí',
-    'goggles-advise' => 'Y parece que nosotros también necesitamos una manito para encontrar la imagen del libro recomendado. ¿Será que necesitamos unas gafas ":reference"?',
+    'goggles-advise' => 'Y parece que nosotros también necesitamos una manito para encontrar los datos del libro recomendado. ¿Será que necesitamos unas gafas ":reference"?',
 
 ];
