@@ -76,7 +76,7 @@ class CourseController extends Controller
             $bookAdvisor = app(BookAdvisor::class);
             $data['advise'] = $bookAdvisor->getAdvise($course->getName());
 
-            if ($data['advise']['cover_url'] == null) {
+            if (!isset($data['advise']['cover_url'])) {
                 $gogglesAdvisor = new GogglesAdvisor();
                 $data['goggles'] = $gogglesAdvisor->getRandomGoggles();
             }

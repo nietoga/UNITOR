@@ -65,6 +65,6 @@ return [
     'activity' => 'Activity',
     'advise' => 'Seems like you need some help. We advise you to buy the book ":book_title". You can find it ',
     'here' => 'here',
-    'goggles-advise' => 'And it seems like we also need some help finding the recomended book\'s cover. Maybe we need the goggles ":reference"?',
+    'goggles-advise' => 'And it seems like we also need some help finding the recomended book\'s data. Maybe we need the goggles ":reference"?',
 
 ];
