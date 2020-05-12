@@ -63,9 +63,9 @@
                                         @elseif($comment->isDown(Auth::user()->getId()))
                                         @php $up_class = "disable" @endphp
                                         @endif
-                                        <a class="btn comment-score-btn btn-success {{$up_class}}" href="/comment/{{$comment->getId()}}/vote-up">+</a>
+                                        <a class="btn comment-score-btn btn-success {{$up_class}}" href="{{ route('comment.voteUp', ['id' => $comment->getId()] )}}">+</a>
                                         <br><span class="comment-score-value">{{ $comment->getScore() }}</span>
-                                        <br><a class="btn comment-score-btn btn-danger {{$down_class}}" href="/comment/{{$comment->getId()}}/vote-down">-</a>
+                                        <br><a class="btn comment-score-btn btn-danger {{$down_class}}" href="{{ route('comment.voteDown', ['id' => $comment->getId()] )}}">-</a>
                                     </div>
                                     <div class="col-xs-5 col-md-8">
                                         <div class="mic-info">
