@@ -52,3 +52,7 @@ This is how you run UNITOR on a Linux system using artisan and apache server (ht
     ````
 
 * Go to http://localhost:8000 and browse in UNITOR!
+
+## Docker
+
+To run it with docker, you can run the launch.sh.example code (Removing .example and run it like a sh script), having the UNITOR folder in root directory (you can also edit this file).
