@@ -12,7 +12,7 @@ class CommentVoteTests extends TestCase
      *
      * @return void
      */
-    public function testExample()
+    public function testVoting()
     {
         $commentVote = new CommentVote([
             'comment_id' => 2,
