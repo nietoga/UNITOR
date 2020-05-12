@@ -1,0 +1,9 @@
+
+#!/bin/bash
+cd ~/UNITOR
+git pull   
+mv .env.deploy .env
+docker container rm -f $(docker container ls -a -q)
+docker image rm $(docker image ls -q)
+docker image build -t laravel-app .
+docker container run -d --name laravel-docker -p 80:80 laravel-app
