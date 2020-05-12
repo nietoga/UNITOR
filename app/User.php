@@ -162,4 +162,12 @@ class User extends Authenticatable
     public function isAdmin() {
         return $this->type === User::ADMIN_TYPE;
     }
+
+    public static function validate($request) {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+    }
 }

@@ -51,7 +51,19 @@
                                 <p class="advise-text">{{ __('messages.advise', ['book_title' => $data['advise']['title']]) }}
                                     <b><a href="{{$data['advise']['url']}}">{{ __('messages.here') }}</a></b>
                                 </p>
-                                <img class="rounded advise-img" src="{{ $data['advise']['cover_url'] }}">
+
+                                @if ($data['advise']['cover_url'] != null)
+                                    <img class="rounded advise-img" src="{{ $data['advise']['cover_url'] }}">
+                                @endif
+                            </div>
+                            @endif
+
+                            @if ($data['goggles'] != [])
+                            <div class="rounded course-advise text-center">
+                                <p class="advise-text">
+                                    {{ __('messages.goggles-advise', ['reference' => $data['goggles']['reference']]) }}
+                                </p>
+                                <img class="rounded advise-img" src="{{ $data['goggles']['image'] }}">
                             </div>
                             @endif
                     </div>
