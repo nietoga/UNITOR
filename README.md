@@ -2,6 +2,9 @@
 
 Manage you studies!
 
+Domain:
+http://unitor.tk/public/
+
 ## How to execute UNITOR
 
 This is how you run UNITOR on a Linux system using artisan and apache server (httpd). You will need composer.
